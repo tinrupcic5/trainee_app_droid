@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "554007908629",
+    "project_id": "trainee-e4218",
+    "storage_bucket": "trainee-e4218.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:554007908629:android:96b7635d0d1105ce95191c",
+        "android_client_info": {
+          "package_name": "com.bitroot.trainee.flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJSFhtx5prmRNc5K51srT288QcZk34V7Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
