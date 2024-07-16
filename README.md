@@ -14,13 +14,13 @@ Welcome to the Trainee Mobile App repository! This mobile application, built wit
 - Training Sessions
   Record and manage details of training sessions, including date, time, and location.
   Create, update, and cancel training sessions with ease.
-  - Participant Count
-    Automatically calculate and track the number of participants for each training session.
-    View real-time attendance data.
-  - Video Library
-    Store and organize training videos for students to access remotely.
-    Stream training videos directly within the app.
-    Categorize videos for easy navigation.
+- Participant Count
+  Automatically calculate and track the number of participants for each training session.
+  View real-time attendance data.
+- Video Library
+  Store and organize training videos for students to access remotely.
+  Stream training videos directly within the app.
+  Categorize videos for easy navigation.
 - Training Session History
   Keep a historical record of past training sessions for reference.
   Access detailed reports of previous sessions.
