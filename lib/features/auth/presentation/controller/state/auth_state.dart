@@ -1,6 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:trainee_app/core/error/failure.dart';
-import 'package:trainee_app/features/auth/data/api/model/user/User.dart';
 import 'package:trainee_app/features/auth/data/api/model/user/userLogin/UserLoginResponse.dart';
 import 'package:trainee_app/features/common/MessageBody.dart';
 

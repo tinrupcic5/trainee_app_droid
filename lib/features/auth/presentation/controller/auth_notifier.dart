@@ -1,30 +1,45 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:trainee_app/core/di.dart';
 import 'package:trainee_app/features/auth/data/api/model/user/UserLogin.dart';
 import 'package:trainee_app/features/auth/data/api/model/user/UserRegisterRequest.dart';
 import 'package:trainee_app/features/auth/domain/service/UserService.dart';
 import 'package:trainee_app/features/auth/presentation/controller/state/auth_state.dart';
+import 'package:trainee_app/features/auth/presentation/util/SharedPrefsManager.dart';
 
 class AuthNotifier extends Notifier<AuthState> {
   late final UserService _userService;
+  late final SharedPrefsManager _sharedPrefsManager;
+
+  AuthNotifier() {
+    _sharedPrefsManager = SharedPrefsManager();
+    _attemptAutoLogin();
+  }
 
   @override
   AuthState build() {
-    _userService = ref.watch(authUseCasesProvider);
-    final currentUser = "FirebaseAuth.instance.currentUser";
-    return currentUser == null
-        ? const AuthState.unauthenticated(fromSignIn: true)
-        : AuthState.authenticated(currentUser);
+    _userService = ref.watch(userServiceProvider);
+    return const AuthState.loading();
   }
 
-  Future<void> login(final String email, final String password) async {
-    state = const AuthState.loading();
-    UserLogin userLogin = UserLogin(userName: email, password: password);
-    final result = await _userService.login(userLogin);
+  Future<void> _attemptAutoLogin() async {
+    final currentUser = await _sharedPrefsManager.getUserLoginFromLocalCache();
+    if (currentUser.userName.isNotEmpty && currentUser.password.isNotEmpty) {
+      print("currentUser: $currentUser");
+      await login(currentUser.userName, currentUser.password);
+    } else {
+      state = const AuthState.unauthenticated(fromSignIn: true);
+    }
+  }
 
+  Future<void> login(final String userName, final String password) async {
+    state = const AuthState.loading();
+    UserLogin userLogin = UserLogin(userName: userName, password: password);
+    final result = await _userService.login(userLogin);
+    print("result: $result");
     result.fold(
       (error) =>
           state = AuthState.unauthenticated(error: error, fromSignIn: true),
-      (user) => state = AuthState.authenticated(user),
+      (userLoginResponse) => state = AuthState.authenticated(userLoginResponse),
     );
   }
 
@@ -39,6 +54,6 @@ class AuthNotifier extends Notifier<AuthState> {
     );
   }
 
-  Future<void> resetPassword(final String email) async =>
-      await _userService.resetPassword(email);
+  // Future<void> resetPassword(final String email) async =>
+  //     await _userService.resetPassword(email);
 }

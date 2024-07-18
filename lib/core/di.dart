@@ -1,13 +1,17 @@
-// import 'package:dio/dio.dart';
-// import 'package:flutter_riverpod/flutter_riverpod.dart';
-// import 'package:trainee_app/features/auth/presentation/controller/auth_notifier.dart';
-// import 'package:trainee_app/features/auth/presentation/controller/state/auth_state.dart';
+import 'package:dio/dio.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:trainee_app/features/auth/data/api/auth_api.dart';
+import 'package:trainee_app/features/auth/domain/repository/user_repository.dart';
+import 'package:trainee_app/features/auth/domain/service/UserService.dart';
+import 'package:trainee_app/features/auth/domain/repository/UserRepositoryImpl.dart';
+import 'package:trainee_app/features/auth/presentation/controller/auth_notifier.dart';
+import 'package:trainee_app/features/auth/presentation/controller/state/auth_state.dart';
 
 // // // ***************** EXTERNAL LIBRARIES ***************** //
 // // final firebaseAuthProvider =
 // //     Provider<FirebaseAuth>((ref) => FirebaseAuth.instance);
 
-// // final dioProvider = Provider<Dio>((ref) => Dio());
+final dioProvider = Provider<Dio>((ref) => Dio());
 
 // // // ***************** CONVERTERS ***************** //
 // // final sightDtoToEntityConverterProvider = Provider<SightDtoToEntityConverter>(
@@ -19,22 +23,22 @@
 // // );
 
 // // // ***************** DATASOURCE ***************** //
-// // final userApiProvider = Provider<UserApi>(
-// //   (ref) => UserApi(ref.read(firebaseAuthProvider)),
-// // );
+// final userApiProvider = Provider<AuthAPI>(
+//   (ref) => AuthAPI(ref.read()),
+// );
 
-// // final sightApiProvider = Provider<SightAPI>(
-// //   (ref) => SightAPI(ref.watch(dioProvider)),
-// // );
+final authApiProvider = Provider<AuthAPI>(
+  (ref) => AuthAPI(ref.watch(dioProvider)),
+);
 
 // // final hiveDatabaseManagerProvider = Provider<HiveDatabaseManager>(
 // //   (ref) => HiveDatabaseManager(),
 // // );
 
-// // ***************** REPOSITORY ***************** //
-// // final userRepositoryProvider = Provider<UserRepository>(
-// //   (ref) => UserRepositoryImpl(ref.watch(userApiProvider)),
-// // );
+// // // ***************** REPOSITORY ***************** //
+final userRepositoryProvider = Provider<UserRepository>(
+  (ref) => UserRepositoryImpl(ref.watch(authApiProvider)),
+);
 
 // // final sightRepositoryProvider = Provider<SightRepository>(
 // //   (ref) => SightRepositoryImpl(
@@ -44,19 +48,19 @@
 // //   ),
 // // );
 
-// // // // ***************** USE CASE ***************** //
-// // final authUseCasesProvider = Provider<AuthUseCases>(
-// //   (ref) => AuthUseCases(ref.watch(userRepositoryProvider)),
-// // );
+// // // // // ***************** USE CASE SERVICES***************** //
+// final authUseCasesProvider = Provider<UserService>(
+//   (ref) => UserService(ref.watch(userRepositoryProvider)),
+// );
 
-// // final sightUseCasesProvider = Provider<SightUseCases>(
-// //   (ref) => SightUseCases(ref.watch(sightRepositoryProvider)),
-// // );
+final userServiceProvider = Provider<UserService>(
+  (ref) => UserService(ref.watch(userRepositoryProvider)),
+);
 
-// // ***************** RIVERPOD ***************** //
-// // final authNotifier = NotifierProvider<AuthNotifier, AuthState>(
-// //   () => AuthNotifier(),
-// // );
+// ***************** RIVERPOD ***************** //
+final authNotifierProvider = NotifierProvider<AuthNotifier, AuthState>(
+  () => AuthNotifier(),
+);
 
 // // final resetPasswordNotifier =
 // //     NotifierProvider<ResetPasswordNotifier, AsyncValue<bool>>(

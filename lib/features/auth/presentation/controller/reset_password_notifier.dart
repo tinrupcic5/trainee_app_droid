@@ -1,5 +1,4 @@
 // import 'package:flutter_riverpod/flutter_riverpod.dart';
-// import 'package:trainee_app/features/auth/domain/usecase/auth_use_cases.dart';
 
 // class ResetPasswordNotifier extends Notifier<AsyncValue<bool>> {
 //   late final AuthUseCases _authUseCases;

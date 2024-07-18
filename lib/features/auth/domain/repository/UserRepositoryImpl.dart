@@ -3,22 +3,23 @@ import 'package:dio/dio.dart';
 import 'package:trainee_app/core/error/failure.dart';
 import 'package:trainee_app/features/auth/data/api/auth_api.dart';
 import 'package:trainee_app/features/auth/data/api/model/user/UserLogin.dart';
-import 'package:trainee_app/features/auth/data/api/model/user/UserRegisterRequest.dart';
 import 'package:trainee_app/features/auth/data/api/model/user/userLogin/UserLoginResponse.dart';
-import 'package:trainee_app/features/auth/domain/service/UserService.dart';
+import 'package:trainee_app/features/auth/domain/repository/user_repository.dart';
 import 'package:trainee_app/features/common/MessageBody.dart';
 
-class UserServiceImpl implements UserService {
+class UserRepositoryImpl implements UserRepository {
   final AuthAPI _authApi;
 
-  const UserServiceImpl(
+  const UserRepositoryImpl(
     this._authApi,
   );
 
   @override
-  Future<Either<Failure, UserLoginResponse>> login(UserLogin userLogin) async {
+  Future<Either<Failure, UserLoginResponse>> loginUser(
+      String email, String password) async {
     try {
-      final response = await _authApi.loginUser(userLogin);
+      final response = await _authApi
+          .loginUser(UserLogin(userName: email, password: password));
       print("response: $response");
       return Right(response);
     } on DioException catch (_) {
@@ -38,8 +39,15 @@ class UserServiceImpl implements UserService {
   }
 
   @override
-  Future<Either<Failure, MessageBody>> register(
-      UserRegisterRequest userRegisterRequest) {
+  Future<Either<Failure, MessageBody>> registerUser(
+      String email, String password) {
+    // TODO: implement registerUser
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<Failure, void>> resetPassword(String email) {
+    // TODO: implement resetPassword
     throw UnimplementedError();
   }
 }

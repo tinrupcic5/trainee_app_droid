@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trainee_app/core/error/route_error.dart';
+import 'package:trainee_app/features/auth/presentation/screen/sign_in_screen.dart';
 import 'package:trainee_app/features/common/presentation/screen/home_screen.dart';
 import 'package:trainee_app/features/initialisation/presentation/screen/splash_screen.dart';
 
@@ -22,8 +23,8 @@ class RouteGenerator {
     switch (settings.name) {
       case splashScreen:
         return MaterialPageRoute(builder: (_) => const SplashScreen());
-      // case signInScreen:
-      //   return MaterialPageRoute(builder: (_) => const SignInScreen());
+      case signInScreen:
+        return MaterialPageRoute(builder: (_) => const SignInScreen());
       // case signUpScreen:
       //   return MaterialPageRoute(builder: (_) => const SignUpScreen());
       // case resetScreen:

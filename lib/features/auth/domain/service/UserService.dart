@@ -3,12 +3,21 @@ import 'package:trainee_app/core/error/failure.dart';
 import 'package:trainee_app/features/auth/data/api/model/user/UserLogin.dart';
 import 'package:trainee_app/features/auth/data/api/model/user/UserRegisterRequest.dart';
 import 'package:trainee_app/features/auth/data/api/model/user/userLogin/UserLoginResponse.dart';
+import 'package:trainee_app/features/auth/domain/repository/user_repository.dart';
 import 'package:trainee_app/features/common/MessageBody.dart';
 
-abstract class UserService {
-  Future<Either<Failure, UserLoginResponse>> login(UserLogin userLogin);
-  Future<Either<Failure, MessageBody>> register(
-      UserRegisterRequest userRegisterRequest);
+class UserService {
+  final UserRepository _userRepository;
 
-  Future<void> logout(String token);
+  const UserService(this._userRepository);
+
+  Future<Either<Failure, UserLoginResponse>> login(UserLogin userLogin) =>
+      _userRepository.loginUser(userLogin.userName, userLogin.password);
+
+  Future<Either<Failure, MessageBody>> register(
+          UserRegisterRequest userRegisterRequest) =>
+      _userRepository.registerUser(
+          userRegisterRequest.userName, userRegisterRequest.password);
+
+  Future<void> logout(String token) => _userRepository.logout(token);
 }

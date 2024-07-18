@@ -30,10 +30,10 @@ class SharedPrefsManager {
   Future<UserLogin> getUserLoginFromLocalCache() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    String? username = prefs.getString('user_username');
-    String? password = prefs.getString('user_password');
+    String? username = prefs.getString('user_username') ?? "";
+    String? password = prefs.getString('user_password') ?? "";
 
-    return UserLogin(userName: username!, password: password!);
+    return UserLogin(userName: username, password: password);
   }
 
   Future<String> getUserTokenFromLocalCache() async {
