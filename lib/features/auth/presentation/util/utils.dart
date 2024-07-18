@@ -18,7 +18,7 @@ bool _isNotValidEmailAddress(final String value) => !RegExp(
 String? validatePassword(final BuildContext context, final String? value) {
   if (value == null || value.isEmpty) {
     return context.localPasswordEmptyValidation;
-  } else if (value.length < 8) {
+  } else if (value.length < 4) {
     return context.localPasswordLengthValidation;
   } else {
     return null;

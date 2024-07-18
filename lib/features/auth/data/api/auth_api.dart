@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:trainee_app/core/error/failure.dart';
 import 'package:trainee_app/features/auth/data/api/model/user/UserLogin.dart';
 import 'package:trainee_app/features/auth/data/api/model/user/UserRegisterRequest.dart';
 import 'package:trainee_app/features/auth/data/api/model/user/userLogin/UserLoginResponse.dart';
@@ -14,7 +13,7 @@ abstract class AuthAPI {
   factory AuthAPI(Dio dio, {String baseUrl}) = _AuthAPI;
 
   @POST('/user/login')
-  Future<UserLoginResponse> loginUser(UserLogin userLogin);
+  Future<UserLoginResponse> loginUser(@Body() UserLogin userLogin);
 
   @POST('')
   Future<UserLoginResponse> registerUser(

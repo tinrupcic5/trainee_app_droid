@@ -26,7 +26,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
 
   @override
   Widget build(BuildContext context) {
-    ref.listen(authNotifier, (_, state) {
+    ref.listen(authNotifierProvider, (_, state) {
       state.whenOrNull(
         unauthenticated: (error, shouldShow) {
           setState(() => _isLoading = false);
@@ -148,7 +148,8 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
   void _login() async {
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
     if (_formKey.currentState!.validate()) {
-      await ref.read(authNotifier.notifier).login(
+      print("${_emailController.text.trim()}");
+      await ref.read(authNotifierProvider.notifier).login(
             _emailController.text.trim(),
             _passwordController.text.trim(),
           );

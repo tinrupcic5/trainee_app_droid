@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trainee_app/core/di.dart';
 import 'package:trainee_app/features/auth/data/api/model/user/UserLogin.dart';
 import 'package:trainee_app/features/auth/data/api/model/user/UserRegisterRequest.dart';
@@ -11,6 +12,7 @@ class AuthNotifier extends Notifier<AuthState> {
   late final SharedPrefsManager _sharedPrefsManager;
 
   AuthNotifier() {
+    print("_attemptAutoLogin");
     _sharedPrefsManager = SharedPrefsManager();
     _attemptAutoLogin();
   }
@@ -35,12 +37,20 @@ class AuthNotifier extends Notifier<AuthState> {
     state = const AuthState.loading();
     UserLogin userLogin = UserLogin(userName: userName, password: password);
     final result = await _userService.login(userLogin);
-    print("result: $result");
     result.fold(
       (error) =>
           state = AuthState.unauthenticated(error: error, fromSignIn: true),
-      (userLoginResponse) => state = AuthState.authenticated(userLoginResponse),
+      (userLoginResponse) async {
+        state = AuthState.authenticated(userLoginResponse);
+        await _saveUserToSharedPref(userLogin);
+      },
     );
+  }
+
+  Future<void> _saveUserToSharedPref(UserLogin userLogin) async {
+    await SharedPrefsManager()
+        .saveUserLoginToLocalCache(userLogin.userName, userLogin.password);
+    // Save other details as needed
   }
 
   Future<void> register(final UserRegisterRequest userRegisterRequest) async {

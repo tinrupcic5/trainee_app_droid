@@ -16,13 +16,13 @@ class UserRepositoryImpl implements UserRepository {
 
   @override
   Future<Either<Failure, UserLoginResponse>> loginUser(
-      String email, String password) async {
+      String username, String password) async {
     try {
       final response = await _authApi
-          .loginUser(UserLogin(userName: email, password: password));
-      print("response: $response");
+          .loginUser(UserLogin(userName: username, password: password));
       return Right(response);
     } on DioException catch (_) {
+      print("response _authApi :  $_authApi");
       return const Left(Failure.unauthorized());
     }
   }
