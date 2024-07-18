@@ -62,7 +62,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                   children: [
                     const Padding(
                       padding:
-                          EdgeInsets.symmetric(vertical: 20, horizontal: 60),
+                          EdgeInsets.symmetric(vertical: 120, horizontal: 60),
                       child: Hero(
                         tag: 'login_image',
                         child: Image(
