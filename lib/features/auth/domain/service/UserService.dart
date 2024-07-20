@@ -19,5 +19,8 @@ class UserService {
       _userRepository.registerUser(
           userRegisterRequest.userName, userRegisterRequest.password);
 
-  Future<void> logout(String token) => _userRepository.logout(token);
+  Future<Either<Failure, MessageBody>> logout(String token) {
+    print("2");
+    return _userRepository.logout(token);
+  }
 }

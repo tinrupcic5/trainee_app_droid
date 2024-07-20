@@ -43,4 +43,15 @@ extension LocalizationExtension on BuildContext {
   String get calendarPage => AppLocalizations.of(this)!.calendar;
   String get myProfilePage => AppLocalizations.of(this)!.profile;
   String get summaryPage => AppLocalizations.of(this)!.summary;
+  String get memberSince => AppLocalizations.of(this)!.memberSince;
+  String get myCard => AppLocalizations.of(this)!.myCard;
+  String get adults => AppLocalizations.of(this)!.adults;
+  String get beginners => AppLocalizations.of(this)!.beginners;
+  String get kids => AppLocalizations.of(this)!.kids;
+  String get all => AppLocalizations.of(this)!.all;
+  String get trainingLevel => AppLocalizations.of(this)!.trainingLevel;
+  String get trainingCanceled => AppLocalizations.of(this)!.trainingCanceled;
+  String get attendTheTraining => AppLocalizations.of(this)!.attendTheTraining;
+  String get notAttendTheTraining =>
+      AppLocalizations.of(this)!.notAttendTheTraining;
 }

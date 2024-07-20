@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+class CustomColors {
+  static const blueCardColor = Color(0xFF5E9EFF);
+  static const purpleCardColor = Color(0xFF7850F0);
+}
+
 //Light palette
 const backgroundColorLight = Color(0xFFFAFDFF);
 const textColorLight = Color(0xFF171C26);
@@ -56,7 +61,8 @@ class AppColors extends ThemeExtension<AppColors> {
       );
 
   @override
-  ThemeExtension<AppColors> lerp(covariant ThemeExtension<AppColors>? other, double t) {
+  ThemeExtension<AppColors> lerp(
+      covariant ThemeExtension<AppColors>? other, double t) {
     if (other is! AppColors) {
       return this;
     }
@@ -68,8 +74,10 @@ class AppColors extends ThemeExtension<AppColors> {
       secondaryColor: Color.lerp(secondaryColor, other.secondaryColor, t),
       errorColor: Color.lerp(errorColor, other.errorColor, t),
       borderColor: Color.lerp(borderColor, other.borderColor, t),
-      ratingActiveColor: Color.lerp(ratingActiveColor, other.ratingActiveColor, t),
-      ratingInactiveColor: Color.lerp(ratingInactiveColor, other.ratingInactiveColor, t),
+      ratingActiveColor:
+          Color.lerp(ratingActiveColor, other.ratingActiveColor, t),
+      ratingInactiveColor:
+          Color.lerp(ratingInactiveColor, other.ratingInactiveColor, t),
     );
   }
 }

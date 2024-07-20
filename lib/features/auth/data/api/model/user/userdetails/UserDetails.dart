@@ -44,4 +44,17 @@ class UserDetails {
           : Settings(language: 'HR'),
     );
   }
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'user': user.toJson(),
+      'name': name,
+      'lastName': lastName,
+      'email': email,
+      'phoneNumber': phoneNumber,
+      'schoolDetails': schoolDetails.toJson(),
+      'trainingLevel': trainingLevel?.toJson(),
+      'settings': settings.toJson(),
+    };
+  }
 }

@@ -12,5 +12,5 @@ abstract interface class UserRepository {
 
   Future<Either<Failure, void>> resetPassword(final String email);
 
-  Future<Either<Failure, void>> logout(String token);
+  Future<Either<Failure, MessageBody>> logout(String token);
 }

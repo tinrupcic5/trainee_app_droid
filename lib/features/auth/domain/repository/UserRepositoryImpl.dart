@@ -28,8 +28,9 @@ class UserRepositoryImpl implements UserRepository {
   }
 
   @override
-  Future<Either<Failure, String>> logout(String token) async {
+  Future<Either<Failure, MessageBody>> logout(String token) async {
     try {
+      print("1: $token");
       final response = await _authApi.logout(token);
       print("Logout successful");
       return Right(response);

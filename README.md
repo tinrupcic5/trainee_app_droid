@@ -25,3 +25,7 @@ Welcome to the Trainee Mobile App repository! This mobile application, built wit
   Keep a historical record of past training sessions for reference.
   Access detailed reports of previous sessions.
   Analyze attendance and performance trends over time.
+
+### Settings
+
+To generate translation files, in terminal run: flutter gen-l10n --arb-dir assets/l10n

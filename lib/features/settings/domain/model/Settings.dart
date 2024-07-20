@@ -13,4 +13,10 @@ class Settings {
       language: json['language'],
     );
   }
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'language': language,
+    };
+  }
 }

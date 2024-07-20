@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:trainee_app/core/localization_extension.dart';
 
 String? validateEmail(final BuildContext context, final String? value) {
@@ -27,3 +28,10 @@ String? validatePassword(final BuildContext context, final String? value) {
 
 bool doPasswordsMatch(final String password, final String confirmPassword) =>
     password == confirmPassword;
+
+String parseStringToDate(String dateString) {
+  final inputFormat = DateFormat('yyyy-MM-ddTHH:mm:ss.SSSSSS');
+  final DateTime dateTime = inputFormat.parse(dateString);
+  final outputFormat = DateFormat('dd.MM.yyyy');
+  return outputFormat.format(dateTime);
+}

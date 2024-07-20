@@ -19,7 +19,7 @@ class SignInScreen extends ConsumerStatefulWidget {
 
 class _SignInScreenState extends ConsumerState<SignInScreen> {
   final _formKey = GlobalKey<FormState>();
-  final _emailController = TextEditingController();
+  final _userNameController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _isPasswordObscure = true;
   bool _isLoading = false;
@@ -47,7 +47,6 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
         },
       );
     });
-
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: GestureDetector(
@@ -75,7 +74,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                     ),
                     const SizedBox(height: 20),
                     CustomTextFormField(
-                      controller: _emailController,
+                      controller: _userNameController,
                       label: context.localEmail,
                       textInputAction: TextInputAction.next,
                       validator: (value) => validateEmail(context, value),
@@ -140,7 +139,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
 
   @override
   void dispose() {
-    _emailController.dispose();
+    _userNameController.dispose();
     _passwordController.dispose();
     super.dispose();
   }
@@ -148,9 +147,9 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
   void _login() async {
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
     if (_formKey.currentState!.validate()) {
-      print("${_emailController.text.trim()}");
+      print("username : ${_userNameController.text.trim()}");
       await ref.read(authNotifierProvider.notifier).login(
-            _emailController.text.trim(),
+            _userNameController.text.trim(),
             _passwordController.text.trim(),
           );
     }

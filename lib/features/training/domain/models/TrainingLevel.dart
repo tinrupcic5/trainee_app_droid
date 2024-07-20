@@ -10,4 +10,10 @@ class TrainingLevel {
       trainingLevelClassification: json['trainingLevelClassification'],
     );
   }
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'trainingLevelClassification': trainingLevelClassification,
+    };
+  }
 }

@@ -25,5 +25,15 @@
   "thereWasAnError": "There was an error.",
   "calendar": "Calendar",
   "profile": "Profile",
-  "summary": "Summary"
+  "summary": "Summary",
+  "memberSince": "Member since:",
+  "myCard": "My card",
+  "adults": "Adults",
+  "beginners": "Beginners",
+  "kids": "Kids",
+  "all": "All",
+  "trainingLevel": "Training level:",
+  "trainingCanceled": "Training canceled",
+  "attendTheTraining": "Attend training",
+  "notAttendTheTraining": "Not Attend training"
 }

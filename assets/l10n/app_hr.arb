@@ -25,5 +25,15 @@
   "thereWasAnError": "Dogodila se pogreška.",
   "calendar": "Kalendar",
   "profile": "Profil",
-  "summary": "Aktualno"
+  "summary": "Aktualno",
+  "memberSince": "Član od:",
+  "myCard": "Moja kartica",
+  "adults": "Odrasli",
+  "beginners": "Početnici",
+  "kids": "Djeca",
+  "all": "Svi",
+  "trainingLevel": "Trening level:",
+  "trainingCanceled": "Trening odgoðen",
+  "attendTheTraining": "Idem na trening",
+  "notAttendTheTraining": "Ne idem na trening"
 }

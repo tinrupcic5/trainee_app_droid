@@ -5,7 +5,9 @@ import 'package:trainee_app/features/auth/domain/repository/user_repository.dart
 import 'package:trainee_app/features/auth/domain/service/UserService.dart';
 import 'package:trainee_app/features/auth/domain/repository/UserRepositoryImpl.dart';
 import 'package:trainee_app/features/auth/presentation/controller/auth_notifier.dart';
+import 'package:trainee_app/features/auth/presentation/controller/logout_notifier.dart';
 import 'package:trainee_app/features/auth/presentation/controller/state/auth_state.dart';
+import 'package:trainee_app/features/auth/presentation/controller/state/logout_state.dart';
 
 // // // ***************** EXTERNAL LIBRARIES ***************** //
 // // final firebaseAuthProvider =
@@ -60,6 +62,9 @@ final userServiceProvider = Provider<UserService>(
 // ***************** RIVERPOD ***************** //
 final authNotifierProvider = NotifierProvider<AuthNotifier, AuthState>(
   () => AuthNotifier(),
+);
+final logoutNotifierProvider = NotifierProvider<LogoutNotifier, LogoutState>(
+  () => LogoutNotifier(),
 );
 
 // // final resetPasswordNotifier =

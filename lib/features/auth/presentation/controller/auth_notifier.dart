@@ -1,5 +1,4 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trainee_app/core/di.dart';
 import 'package:trainee_app/features/auth/data/api/model/user/UserLogin.dart';
 import 'package:trainee_app/features/auth/data/api/model/user/UserRegisterRequest.dart';
@@ -42,15 +41,16 @@ class AuthNotifier extends Notifier<AuthState> {
           state = AuthState.unauthenticated(error: error, fromSignIn: true),
       (userLoginResponse) async {
         state = AuthState.authenticated(userLoginResponse);
-        await _saveUserToSharedPref(userLogin);
+        await SharedPrefsManager()
+            .saveUserLoginToLocalCache(userLogin.userName, userLogin.password);
+        await SharedPrefsManager()
+            .saveUserDetailsToLocalCache(userLoginResponse.userDetails);
+        await SharedPrefsManager()
+            .saveUserTokenToLocalCache(userLoginResponse.token);
+        await SharedPrefsManager()
+            .saveQrCodeToLocalCache(userLoginResponse.qrData!);
       },
     );
-  }
-
-  Future<void> _saveUserToSharedPref(UserLogin userLogin) async {
-    await SharedPrefsManager()
-        .saveUserLoginToLocalCache(userLogin.userName, userLogin.password);
-    // Save other details as needed
   }
 
   Future<void> register(final UserRegisterRequest userRegisterRequest) async {
