@@ -77,35 +77,6 @@ class _AuthAPI implements AuthAPI {
   }
 
   @override
-  Future<RefreshTokenResponse> refreshToken(
-      RefreshTokenRequest refreshTokenRequest) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(refreshTokenRequest.toJson());
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<RefreshTokenResponse>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              '/user/refresh-token',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
-    final value = RefreshTokenResponse.fromJson(_result.data!);
-    return value;
-  }
-
-  @override
   Future<MessageBody> logout(String authorizationHeader) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};

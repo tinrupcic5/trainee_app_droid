@@ -5,10 +5,7 @@ import 'package:trainee_app/features/auth/data/api/auth_api.dart';
 import 'package:trainee_app/features/auth/data/api/model/user/UserLogin.dart';
 import 'package:trainee_app/features/auth/data/api/model/user/userLogin/UserLoginResponse.dart';
 import 'package:trainee_app/features/auth/domain/repository/user_repository.dart';
-import 'package:trainee_app/features/common/AuthHeaderRequest.dart';
 import 'package:trainee_app/features/common/MessageBody.dart';
-import 'package:trainee_app/features/common/RefreshTokenRequest.dart';
-import 'package:trainee_app/features/common/RefreshTokenResponse.dart';
 
 class UserRepositoryImpl implements UserRepository {
   final AuthAPI _authApi;
@@ -46,18 +43,6 @@ class UserRepositoryImpl implements UserRepository {
       String email, String password) {
     // TODO: implement registerUser
     throw UnimplementedError();
-  }
-
-  @override
-  Future<Either<Failure, RefreshTokenResponse>> refreshToken(
-      RefreshTokenRequest refreshTokenRequest) async {
-    try {
-      final response = await _authApi.refreshToken(refreshTokenRequest);
-      print("refreshToken token: $response");
-      return Right(response);
-    } on DioException catch (_) {
-      return const Left(Failure.unauthorized());
-    }
   }
 
   @override

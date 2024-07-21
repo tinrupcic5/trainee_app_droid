@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:trainee_app/core/localization_extension.dart';
 import 'package:trainee_app/features/locations/presentation/controller/card/calendar_card.dart';
 import 'package:trainee_app/features/locations/presentation/controller/card/calendar_items.dart'; // Adjust import as needed
 

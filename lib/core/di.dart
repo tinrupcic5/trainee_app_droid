@@ -7,10 +7,8 @@ import 'package:trainee_app/features/auth/domain/service/UserService.dart';
 import 'package:trainee_app/features/auth/domain/repository/UserRepositoryImpl.dart';
 import 'package:trainee_app/features/auth/presentation/controller/auth_notifier.dart';
 import 'package:trainee_app/features/auth/presentation/controller/logout_notifier.dart';
-import 'package:trainee_app/features/auth/presentation/controller/refresh_token_notifier.dart';
 import 'package:trainee_app/features/auth/presentation/controller/state/auth_state.dart';
 import 'package:trainee_app/features/auth/presentation/controller/state/logout_state.dart';
-import 'package:trainee_app/features/auth/presentation/controller/state/refresh_token_state.dart';
 
 // // // ***************** EXTERNAL LIBRARIES ***************** //
 // // final firebaseAuthProvider =
@@ -84,10 +82,6 @@ final logoutNotifierProvider = NotifierProvider<LogoutNotifier, LogoutState>(
   () => LogoutNotifier(),
 );
 
-final refreshTokenNotifierProvider =
-    NotifierProvider<RefreshTokenNotifier, RefreshTokenState>(
-  () => RefreshTokenNotifier(),
-);
 
 // // final resetPasswordNotifier =
 // //     NotifierProvider<ResetPasswordNotifier, AsyncValue<bool>>(
