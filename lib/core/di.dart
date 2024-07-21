@@ -9,6 +9,10 @@ import 'package:trainee_app/features/auth/presentation/controller/auth_notifier.
 import 'package:trainee_app/features/auth/presentation/controller/logout_notifier.dart';
 import 'package:trainee_app/features/auth/presentation/controller/state/auth_state.dart';
 import 'package:trainee_app/features/auth/presentation/controller/state/logout_state.dart';
+import 'package:trainee_app/features/training/data/api/training_api.dart';
+import 'package:trainee_app/features/training/data/domain/repository/training_repository.dart';
+import 'package:trainee_app/features/training/data/domain/repository/training_repository_impl.dart';
+import 'package:trainee_app/features/training/data/domain/service/training_service.dart';
 
 // // // ***************** EXTERNAL LIBRARIES ***************** //
 // // final firebaseAuthProvider =
@@ -30,10 +34,10 @@ final dioProviderWithoutToken =
 // // );
 
 // // // ***************** DATASOURCE ***************** //
-// final userApiProvider = Provider<AuthAPI>(
-//   (ref) => AuthAPI(ref.read()),
-// );
 
+final trainingApiProviderWithToken = Provider<TrainingAPI>(
+  (ref) => TrainingAPI(ref.watch(dioProviderWithToken)),
+);
 final authApiProviderWithToken = Provider<AuthAPI>(
   (ref) => AuthAPI(ref.watch(dioProviderWithToken)),
 );
@@ -48,6 +52,9 @@ final authApiProvider = Provider<AuthAPI>(
 // // // ***************** REPOSITORY ***************** //
 final userRepositoryProvider = Provider<UserRepository>(
   (ref) => UserRepositoryImpl(ref.watch(authApiProvider)),
+);
+final trainingRepositoryProviderWithToken = Provider<TrainingRepository>(
+  (ref) => TrainingRepositoryImpl(ref.watch(trainingApiProviderWithToken)),
 );
 final userRepositoryProviderWithToken = Provider<UserRepository>(
   (ref) => UserRepositoryImpl(ref.watch(authApiProviderWithToken)),
@@ -71,6 +78,9 @@ final userServiceProvider = Provider<UserService>(
 );
 final userServiceProviderWithToken = Provider<UserService>(
   (ref) => UserService(ref.watch(userRepositoryProviderWithToken)),
+);
+final trainingServiceProviderWithToken = Provider<TrainingService>(
+  (ref) => TrainingService(ref.watch(trainingRepositoryProviderWithToken)),
 );
 
 // ***************** RIVERPOD ***************** //

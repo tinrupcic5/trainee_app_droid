@@ -1,6 +1,6 @@
 import 'package:trainee_app/features/school/domain/models/schooldetails/SchoolDetails.dart';
 import 'package:trainee_app/features/settings/domain/model/Settings.dart';
-import 'package:trainee_app/features/training/domain/models/TrainingLevel.dart';
+import 'package:trainee_app/features/training/data/api/model/TrainingLevel.dart';
 
 import '../User.dart';
 

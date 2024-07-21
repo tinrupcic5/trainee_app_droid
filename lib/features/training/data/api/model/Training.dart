@@ -1,7 +1,7 @@
 import 'package:trainee_app/features/auth/data/api/model/user/userdetails/UserDetails.dart';
 import 'package:trainee_app/features/participation/domain/models/Participation.dart';
 import 'package:trainee_app/features/school/domain/models/schooldetails/SchoolDetails.dart';
-import 'package:trainee_app/features/training/domain/models/TrainingLevel.dart';
+import 'package:trainee_app/features/training/data/api/model/TrainingLevel.dart';
 
 class TrainingDetails {
   final int? id;

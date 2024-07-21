@@ -1,5 +1,5 @@
 import 'package:trainee_app/features/auth/data/api/model/user/userdetails/UserDetails.dart';
-import 'package:trainee_app/features/calendar/domain/models/TrainingCalendar.dart';
+import 'package:trainee_app/features/calendar/data/api/model/TrainingCalendar.dart';
 
 class Participation {
   final int? id;

@@ -1,4 +1,4 @@
-import 'package:trainee_app/features/training/domain/models/Training.dart';
+import 'package:trainee_app/features/training/data/api/model/Training.dart';
 
 class TrainingCalendar {
   final int? id;
