@@ -1,19 +1,26 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:trainee_app/features/auth/data/api/TokenInterceptor.dart';
 import 'package:trainee_app/features/auth/data/api/auth_api.dart';
 import 'package:trainee_app/features/auth/domain/repository/user_repository.dart';
 import 'package:trainee_app/features/auth/domain/service/UserService.dart';
 import 'package:trainee_app/features/auth/domain/repository/UserRepositoryImpl.dart';
 import 'package:trainee_app/features/auth/presentation/controller/auth_notifier.dart';
 import 'package:trainee_app/features/auth/presentation/controller/logout_notifier.dart';
+import 'package:trainee_app/features/auth/presentation/controller/refresh_token_notifier.dart';
 import 'package:trainee_app/features/auth/presentation/controller/state/auth_state.dart';
 import 'package:trainee_app/features/auth/presentation/controller/state/logout_state.dart';
+import 'package:trainee_app/features/auth/presentation/controller/state/refresh_token_state.dart';
 
 // // // ***************** EXTERNAL LIBRARIES ***************** //
 // // final firebaseAuthProvider =
 // //     Provider<FirebaseAuth>((ref) => FirebaseAuth.instance);
 
-final dioProvider = Provider<Dio>((ref) => Dio());
+final dioProviderWithToken =
+    Provider<Dio>((ref) => createDioWithTokenInterceptor());
+final dioProviderWithoutToken =
+    Provider<Dio>((ref) => createDioWithoutTokenInterceptor());
+// final dioProvider = Provider<Dio>((ref) => dioProviderWithToken);
 
 // // // ***************** CONVERTERS ***************** //
 // // final sightDtoToEntityConverterProvider = Provider<SightDtoToEntityConverter>(
@@ -29,8 +36,11 @@ final dioProvider = Provider<Dio>((ref) => Dio());
 //   (ref) => AuthAPI(ref.read()),
 // );
 
+final authApiProviderWithToken = Provider<AuthAPI>(
+  (ref) => AuthAPI(ref.watch(dioProviderWithToken)),
+);
 final authApiProvider = Provider<AuthAPI>(
-  (ref) => AuthAPI(ref.watch(dioProvider)),
+  (ref) => AuthAPI(ref.watch(dioProviderWithoutToken)),
 );
 
 // // final hiveDatabaseManagerProvider = Provider<HiveDatabaseManager>(
@@ -40,6 +50,9 @@ final authApiProvider = Provider<AuthAPI>(
 // // // ***************** REPOSITORY ***************** //
 final userRepositoryProvider = Provider<UserRepository>(
   (ref) => UserRepositoryImpl(ref.watch(authApiProvider)),
+);
+final userRepositoryProviderWithToken = Provider<UserRepository>(
+  (ref) => UserRepositoryImpl(ref.watch(authApiProviderWithToken)),
 );
 
 // // final sightRepositoryProvider = Provider<SightRepository>(
@@ -58,13 +71,22 @@ final userRepositoryProvider = Provider<UserRepository>(
 final userServiceProvider = Provider<UserService>(
   (ref) => UserService(ref.watch(userRepositoryProvider)),
 );
+final userServiceProviderWithToken = Provider<UserService>(
+  (ref) => UserService(ref.watch(userRepositoryProviderWithToken)),
+);
 
 // ***************** RIVERPOD ***************** //
 final authNotifierProvider = NotifierProvider<AuthNotifier, AuthState>(
   () => AuthNotifier(),
 );
+
 final logoutNotifierProvider = NotifierProvider<LogoutNotifier, LogoutState>(
   () => LogoutNotifier(),
+);
+
+final refreshTokenNotifierProvider =
+    NotifierProvider<RefreshTokenNotifier, RefreshTokenState>(
+  () => RefreshTokenNotifier(),
 );
 
 // // final resetPasswordNotifier =

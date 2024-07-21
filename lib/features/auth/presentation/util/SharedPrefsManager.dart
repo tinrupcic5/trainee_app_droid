@@ -23,6 +23,24 @@ class SharedPrefsManager {
     return token!;
   }
 
+  //REFRESH TOKEN//
+  Future<void> saveUserRefreshTokenToLocalCache(String token) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('refresh_token', token);
+    print('User Token saved to local cache');
+  }
+
+  Future<void> deleteUserRefreshTokenFromLocalCache() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.remove('refresh_token');
+  }
+
+  Future<String> getUserRefreshTokenFromLocalCache() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? refreshToken = prefs.getString('refresh_token');
+    return refreshToken!;
+  }
+
   //USER//
   Future<void> saveUserLoginToLocalCache(
       String username, String password) async {
@@ -95,6 +113,7 @@ class SharedPrefsManager {
     await deleteUserDetailsFromLocalCache();
     await deleteUserLoginFromLocalCache();
     await deleteUserTokenFromLocalCache();
+    await deleteUserRefreshTokenFromLocalCache();
     print('Everything removed from local cache');
   }
 }

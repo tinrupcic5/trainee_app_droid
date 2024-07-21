@@ -12,6 +12,8 @@ Future<void> main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   await FirebaseApi().initNotification();
+
+  // await SharedPrefsManager().deleteAllCache();
   runApp(const ProviderScope(child: MyApp()));
 }
 

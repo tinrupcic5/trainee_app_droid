@@ -5,6 +5,8 @@ import 'package:trainee_app/features/auth/data/api/model/user/UserRegisterReques
 import 'package:trainee_app/features/auth/data/api/model/user/userLogin/UserLoginResponse.dart';
 import 'package:trainee_app/features/auth/domain/repository/user_repository.dart';
 import 'package:trainee_app/features/common/MessageBody.dart';
+import 'package:trainee_app/features/common/RefreshTokenRequest.dart';
+import 'package:trainee_app/features/common/RefreshTokenResponse.dart';
 
 class UserService {
   final UserRepository _userRepository;
@@ -20,7 +22,11 @@ class UserService {
           userRegisterRequest.userName, userRegisterRequest.password);
 
   Future<Either<Failure, MessageBody>> logout(String token) {
-    print("2");
     return _userRepository.logout(token);
+  }
+
+  Future<Either<Failure, RefreshTokenResponse>> refreshToken(
+      RefreshTokenRequest refreshTokenRequest) {
+    return _userRepository.refreshToken(refreshTokenRequest);
   }
 }

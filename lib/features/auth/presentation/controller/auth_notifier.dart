@@ -11,7 +11,6 @@ class AuthNotifier extends Notifier<AuthState> {
   late final SharedPrefsManager _sharedPrefsManager;
 
   AuthNotifier() {
-    print("_attemptAutoLogin");
     _sharedPrefsManager = SharedPrefsManager();
     _attemptAutoLogin();
   }
@@ -26,9 +25,12 @@ class AuthNotifier extends Notifier<AuthState> {
     final currentUser = await _sharedPrefsManager.getUserLoginFromLocalCache();
     if (currentUser.userName.isNotEmpty && currentUser.password.isNotEmpty) {
       print("currentUser: $currentUser");
+      print("_attempt Auto Login");
+
       await login(currentUser.userName, currentUser.password);
     } else {
-      state = const AuthState.unauthenticated(fromSignIn: true);
+      return;
+      // state = const AuthState.unauthenticated(fromSignIn: true);
     }
   }
 
@@ -47,6 +49,8 @@ class AuthNotifier extends Notifier<AuthState> {
             .saveUserDetailsToLocalCache(userLoginResponse.userDetails);
         await SharedPrefsManager()
             .saveUserTokenToLocalCache(userLoginResponse.token);
+        await SharedPrefsManager()
+            .saveUserRefreshTokenToLocalCache(userLoginResponse.refreshToken);
         await SharedPrefsManager()
             .saveQrCodeToLocalCache(userLoginResponse.qrData!);
       },

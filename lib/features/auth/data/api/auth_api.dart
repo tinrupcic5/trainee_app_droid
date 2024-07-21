@@ -4,11 +4,13 @@ import 'package:trainee_app/features/auth/data/api/model/user/UserRegisterReques
 import 'package:trainee_app/features/auth/data/api/model/user/userLogin/UserLoginResponse.dart';
 import 'package:trainee_app/features/auth/presentation/util/AppStrings.dart';
 import 'package:retrofit/retrofit.dart';
+import 'package:trainee_app/features/common/RefreshTokenRequest.dart';
+import 'package:trainee_app/features/common/RefreshTokenResponse.dart';
 import 'package:trainee_app/features/common/MessageBody.dart';
 
 part 'auth_api.g.dart';
 
-@RestApi(baseUrl: AppStrings.url)
+@RestApi(baseUrl: AppStrings.baseUrl)
 abstract class AuthAPI {
   factory AuthAPI(Dio dio, {String baseUrl}) = _AuthAPI;
 
@@ -18,6 +20,10 @@ abstract class AuthAPI {
   @POST('')
   Future<UserLoginResponse> registerUser(
       UserRegisterRequest userRegisterRequest);
+
+  @POST('/user/refresh-token')
+  Future<RefreshTokenResponse> refreshToken(
+      @Body() RefreshTokenRequest refreshTokenRequest);
 
   @GET('/user/logout')
   Future<MessageBody> logout(

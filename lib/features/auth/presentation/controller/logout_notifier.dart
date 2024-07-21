@@ -16,17 +16,14 @@ class LogoutNotifier extends Notifier<LogoutState> {
 
   @override
   LogoutState build() {
-    _userService = ref.watch(userServiceProvider);
+    _userService = ref.watch(userServiceProviderWithToken);
     return const LogoutState.loading();
   }
 
   Future<void> attemptLogingOut() async {
     state = const LogoutState.loading();
-    print("3");
     final token = await _sharedPrefsManager.getUserTokenFromLocalCache();
-    print("token: $token");
-    final result = await _userService.logout('Bearer $token');
-    print("result: $result");
+    final result = await _userService.logout(token);
     result.fold(
       (error) =>
           state = LogoutState.unauthenticated(error: error, fromSignIn: true),
