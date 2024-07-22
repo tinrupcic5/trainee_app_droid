@@ -9,6 +9,13 @@ class CalendarItemModel {
   final String trainingLevel;
   final bool attendedStatus;
   final Color color;
-  CalendarItemModel(this.trainingId, this.trainingName, this.trainingTime,
-      this.trainingLevel, this.attendedStatus, this.trainingStatus, this.color);
+  CalendarItemModel(
+    this.trainingId,
+    this.trainingName,
+    this.trainingTime,
+    this.trainingLevel,
+    this.attendedStatus,
+    this.trainingStatus,
+    this.color,
+  );
 }

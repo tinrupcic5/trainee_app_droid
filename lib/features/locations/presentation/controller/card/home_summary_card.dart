@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class HomeSummary extends StatefulWidget {
-  const HomeSummary({super.key});
+class HomeSummaryCard extends StatefulWidget {
+  const HomeSummaryCard({super.key});
 
   // @override
-  // State<HommeSummary> createState() => _HommeSummaryCardState();
+  // State<HomeSummaryCard> createState() => _HommeSummaryCardState();
 
   @override
   State<StatefulWidget> createState() {

@@ -9,6 +9,8 @@ import 'package:trainee_app/features/auth/presentation/controller/auth_notifier.
 import 'package:trainee_app/features/auth/presentation/controller/logout_notifier.dart';
 import 'package:trainee_app/features/auth/presentation/controller/state/auth_state.dart';
 import 'package:trainee_app/features/auth/presentation/controller/state/logout_state.dart';
+import 'package:trainee_app/features/auth/presentation/controller/state/training_state.dart';
+import 'package:trainee_app/features/auth/presentation/controller/training_notifier.dart';
 import 'package:trainee_app/features/training/data/api/training_api.dart';
 import 'package:trainee_app/features/training/data/domain/repository/training_repository.dart';
 import 'package:trainee_app/features/training/data/domain/repository/training_repository_impl.dart';
@@ -90,6 +92,9 @@ final authNotifierProvider = NotifierProvider<AuthNotifier, AuthState>(
 
 final logoutNotifierProvider = NotifierProvider<LogoutNotifier, LogoutState>(
   () => LogoutNotifier(),
+);
+final trainingListProvider = NotifierProvider<TrainingNotifier, TrainingState>(
+  () => TrainingNotifier(),
 );
 
 

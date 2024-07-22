@@ -18,75 +18,45 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$TrainingState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<TrainingDetails> trainings) loaded,
     required TResult Function(String message) error,
-    required TResult Function() saving,
-    required TResult Function(MessageBody messageBody) saved,
-    required TResult Function() updating,
-    required TResult Function(MessageBody messageBody) updated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<TrainingDetails> trainings)? loaded,
     TResult? Function(String message)? error,
-    TResult? Function()? saving,
-    TResult? Function(MessageBody messageBody)? saved,
-    TResult? Function()? updating,
-    TResult? Function(MessageBody messageBody)? updated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<TrainingDetails> trainings)? loaded,
     TResult Function(String message)? error,
-    TResult Function()? saving,
-    TResult Function(MessageBody messageBody)? saved,
-    TResult Function()? updating,
-    TResult Function(MessageBody messageBody)? updated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
-    required TResult Function(_Saving value) saving,
-    required TResult Function(_Saved value) saved,
-    required TResult Function(_Updating value) updating,
-    required TResult Function(_Updated value) updated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
-    TResult? Function(_Saving value)? saving,
-    TResult? Function(_Saved value)? saved,
-    TResult? Function(_Updating value)? updating,
-    TResult? Function(_Updated value)? updated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
-    TResult Function(_Saving value)? saving,
-    TResult Function(_Saved value)? saved,
-    TResult Function(_Updating value)? updating,
-    TResult Function(_Updated value)? updated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -108,144 +78,6 @@ class _$TrainingStateCopyWithImpl<$Res, $Val extends TrainingState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$TrainingStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
-
-  @override
-  String toString() {
-    return 'TrainingState.initial()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<TrainingDetails> trainings) loaded,
-    required TResult Function(String message) error,
-    required TResult Function() saving,
-    required TResult Function(MessageBody messageBody) saved,
-    required TResult Function() updating,
-    required TResult Function(MessageBody messageBody) updated,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<TrainingDetails> trainings)? loaded,
-    TResult? Function(String message)? error,
-    TResult? Function()? saving,
-    TResult? Function(MessageBody messageBody)? saved,
-    TResult? Function()? updating,
-    TResult? Function(MessageBody messageBody)? updated,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<TrainingDetails> trainings)? loaded,
-    TResult Function(String message)? error,
-    TResult Function()? saving,
-    TResult Function(MessageBody messageBody)? saved,
-    TResult Function()? updating,
-    TResult Function(MessageBody messageBody)? updated,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Error value) error,
-    required TResult Function(_Saving value) saving,
-    required TResult Function(_Saved value) saved,
-    required TResult Function(_Updating value) updating,
-    required TResult Function(_Updated value) updated,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_Saving value)? saving,
-    TResult? Function(_Saved value)? saved,
-    TResult? Function(_Updating value)? updating,
-    TResult? Function(_Updated value)? updated,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
-    TResult Function(_Saving value)? saving,
-    TResult Function(_Saved value)? saved,
-    TResult Function(_Updating value)? updating,
-    TResult Function(_Updated value)? updated,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Initial implements TrainingState {
-  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
@@ -286,14 +118,9 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<TrainingDetails> trainings) loaded,
     required TResult Function(String message) error,
-    required TResult Function() saving,
-    required TResult Function(MessageBody messageBody) saved,
-    required TResult Function() updating,
-    required TResult Function(MessageBody messageBody) updated,
   }) {
     return loading();
   }
@@ -301,14 +128,9 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<TrainingDetails> trainings)? loaded,
     TResult? Function(String message)? error,
-    TResult? Function()? saving,
-    TResult? Function(MessageBody messageBody)? saved,
-    TResult? Function()? updating,
-    TResult? Function(MessageBody messageBody)? updated,
   }) {
     return loading?.call();
   }
@@ -316,14 +138,9 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<TrainingDetails> trainings)? loaded,
     TResult Function(String message)? error,
-    TResult Function()? saving,
-    TResult Function(MessageBody messageBody)? saved,
-    TResult Function()? updating,
-    TResult Function(MessageBody messageBody)? updated,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -335,14 +152,9 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
-    required TResult Function(_Saving value) saving,
-    required TResult Function(_Saved value) saved,
-    required TResult Function(_Updating value) updating,
-    required TResult Function(_Updated value) updated,
   }) {
     return loading(this);
   }
@@ -350,14 +162,9 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
-    TResult? Function(_Saving value)? saving,
-    TResult? Function(_Saved value)? saved,
-    TResult? Function(_Updating value)? updating,
-    TResult? Function(_Updated value)? updated,
   }) {
     return loading?.call(this);
   }
@@ -365,14 +172,9 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
-    TResult Function(_Saving value)? saving,
-    TResult Function(_Saved value)? saved,
-    TResult Function(_Updating value)? updating,
-    TResult Function(_Updated value)? updated,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -458,14 +260,9 @@ class _$LoadedImpl implements _Loaded {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<TrainingDetails> trainings) loaded,
     required TResult Function(String message) error,
-    required TResult Function() saving,
-    required TResult Function(MessageBody messageBody) saved,
-    required TResult Function() updating,
-    required TResult Function(MessageBody messageBody) updated,
   }) {
     return loaded(trainings);
   }
@@ -473,14 +270,9 @@ class _$LoadedImpl implements _Loaded {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<TrainingDetails> trainings)? loaded,
     TResult? Function(String message)? error,
-    TResult? Function()? saving,
-    TResult? Function(MessageBody messageBody)? saved,
-    TResult? Function()? updating,
-    TResult? Function(MessageBody messageBody)? updated,
   }) {
     return loaded?.call(trainings);
   }
@@ -488,14 +280,9 @@ class _$LoadedImpl implements _Loaded {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<TrainingDetails> trainings)? loaded,
     TResult Function(String message)? error,
-    TResult Function()? saving,
-    TResult Function(MessageBody messageBody)? saved,
-    TResult Function()? updating,
-    TResult Function(MessageBody messageBody)? updated,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -507,14 +294,9 @@ class _$LoadedImpl implements _Loaded {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
-    required TResult Function(_Saving value) saving,
-    required TResult Function(_Saved value) saved,
-    required TResult Function(_Updating value) updating,
-    required TResult Function(_Updated value) updated,
   }) {
     return loaded(this);
   }
@@ -522,14 +304,9 @@ class _$LoadedImpl implements _Loaded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
-    TResult? Function(_Saving value)? saving,
-    TResult? Function(_Saved value)? saved,
-    TResult? Function(_Updating value)? updating,
-    TResult? Function(_Updated value)? updated,
   }) {
     return loaded?.call(this);
   }
@@ -537,14 +314,9 @@ class _$LoadedImpl implements _Loaded {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
-    TResult Function(_Saving value)? saving,
-    TResult Function(_Saved value)? saved,
-    TResult Function(_Updating value)? updating,
-    TResult Function(_Updated value)? updated,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -628,14 +400,9 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<TrainingDetails> trainings) loaded,
     required TResult Function(String message) error,
-    required TResult Function() saving,
-    required TResult Function(MessageBody messageBody) saved,
-    required TResult Function() updating,
-    required TResult Function(MessageBody messageBody) updated,
   }) {
     return error(message);
   }
@@ -643,14 +410,9 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<TrainingDetails> trainings)? loaded,
     TResult? Function(String message)? error,
-    TResult? Function()? saving,
-    TResult? Function(MessageBody messageBody)? saved,
-    TResult? Function()? updating,
-    TResult? Function(MessageBody messageBody)? updated,
   }) {
     return error?.call(message);
   }
@@ -658,14 +420,9 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<TrainingDetails> trainings)? loaded,
     TResult Function(String message)? error,
-    TResult Function()? saving,
-    TResult Function(MessageBody messageBody)? saved,
-    TResult Function()? updating,
-    TResult Function(MessageBody messageBody)? updated,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -677,14 +434,9 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
-    required TResult Function(_Saving value) saving,
-    required TResult Function(_Saved value) saved,
-    required TResult Function(_Updating value) updating,
-    required TResult Function(_Updated value) updated,
   }) {
     return error(this);
   }
@@ -692,14 +444,9 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
-    TResult? Function(_Saving value)? saving,
-    TResult? Function(_Saved value)? saved,
-    TResult? Function(_Updating value)? updating,
-    TResult? Function(_Updated value)? updated,
   }) {
     return error?.call(this);
   }
@@ -707,14 +454,9 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
-    TResult Function(_Saving value)? saving,
-    TResult Function(_Saved value)? saved,
-    TResult Function(_Updating value)? updating,
-    TResult Function(_Updated value)? updated,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -730,622 +472,5 @@ abstract class _Error implements TrainingState {
   String get message;
   @JsonKey(ignore: true)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$SavingImplCopyWith<$Res> {
-  factory _$$SavingImplCopyWith(
-          _$SavingImpl value, $Res Function(_$SavingImpl) then) =
-      __$$SavingImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$SavingImplCopyWithImpl<$Res>
-    extends _$TrainingStateCopyWithImpl<$Res, _$SavingImpl>
-    implements _$$SavingImplCopyWith<$Res> {
-  __$$SavingImplCopyWithImpl(
-      _$SavingImpl _value, $Res Function(_$SavingImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$SavingImpl implements _Saving {
-  const _$SavingImpl();
-
-  @override
-  String toString() {
-    return 'TrainingState.saving()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SavingImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<TrainingDetails> trainings) loaded,
-    required TResult Function(String message) error,
-    required TResult Function() saving,
-    required TResult Function(MessageBody messageBody) saved,
-    required TResult Function() updating,
-    required TResult Function(MessageBody messageBody) updated,
-  }) {
-    return saving();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<TrainingDetails> trainings)? loaded,
-    TResult? Function(String message)? error,
-    TResult? Function()? saving,
-    TResult? Function(MessageBody messageBody)? saved,
-    TResult? Function()? updating,
-    TResult? Function(MessageBody messageBody)? updated,
-  }) {
-    return saving?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<TrainingDetails> trainings)? loaded,
-    TResult Function(String message)? error,
-    TResult Function()? saving,
-    TResult Function(MessageBody messageBody)? saved,
-    TResult Function()? updating,
-    TResult Function(MessageBody messageBody)? updated,
-    required TResult orElse(),
-  }) {
-    if (saving != null) {
-      return saving();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Error value) error,
-    required TResult Function(_Saving value) saving,
-    required TResult Function(_Saved value) saved,
-    required TResult Function(_Updating value) updating,
-    required TResult Function(_Updated value) updated,
-  }) {
-    return saving(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_Saving value)? saving,
-    TResult? Function(_Saved value)? saved,
-    TResult? Function(_Updating value)? updating,
-    TResult? Function(_Updated value)? updated,
-  }) {
-    return saving?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
-    TResult Function(_Saving value)? saving,
-    TResult Function(_Saved value)? saved,
-    TResult Function(_Updating value)? updating,
-    TResult Function(_Updated value)? updated,
-    required TResult orElse(),
-  }) {
-    if (saving != null) {
-      return saving(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Saving implements TrainingState {
-  const factory _Saving() = _$SavingImpl;
-}
-
-/// @nodoc
-abstract class _$$SavedImplCopyWith<$Res> {
-  factory _$$SavedImplCopyWith(
-          _$SavedImpl value, $Res Function(_$SavedImpl) then) =
-      __$$SavedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({MessageBody messageBody});
-}
-
-/// @nodoc
-class __$$SavedImplCopyWithImpl<$Res>
-    extends _$TrainingStateCopyWithImpl<$Res, _$SavedImpl>
-    implements _$$SavedImplCopyWith<$Res> {
-  __$$SavedImplCopyWithImpl(
-      _$SavedImpl _value, $Res Function(_$SavedImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? messageBody = null,
-  }) {
-    return _then(_$SavedImpl(
-      messageBody: null == messageBody
-          ? _value.messageBody
-          : messageBody // ignore: cast_nullable_to_non_nullable
-              as MessageBody,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$SavedImpl implements _Saved {
-  const _$SavedImpl({required this.messageBody});
-
-  @override
-  final MessageBody messageBody;
-
-  @override
-  String toString() {
-    return 'TrainingState.saved(messageBody: $messageBody)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SavedImpl &&
-            (identical(other.messageBody, messageBody) ||
-                other.messageBody == messageBody));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, messageBody);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SavedImplCopyWith<_$SavedImpl> get copyWith =>
-      __$$SavedImplCopyWithImpl<_$SavedImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<TrainingDetails> trainings) loaded,
-    required TResult Function(String message) error,
-    required TResult Function() saving,
-    required TResult Function(MessageBody messageBody) saved,
-    required TResult Function() updating,
-    required TResult Function(MessageBody messageBody) updated,
-  }) {
-    return saved(messageBody);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<TrainingDetails> trainings)? loaded,
-    TResult? Function(String message)? error,
-    TResult? Function()? saving,
-    TResult? Function(MessageBody messageBody)? saved,
-    TResult? Function()? updating,
-    TResult? Function(MessageBody messageBody)? updated,
-  }) {
-    return saved?.call(messageBody);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<TrainingDetails> trainings)? loaded,
-    TResult Function(String message)? error,
-    TResult Function()? saving,
-    TResult Function(MessageBody messageBody)? saved,
-    TResult Function()? updating,
-    TResult Function(MessageBody messageBody)? updated,
-    required TResult orElse(),
-  }) {
-    if (saved != null) {
-      return saved(messageBody);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Error value) error,
-    required TResult Function(_Saving value) saving,
-    required TResult Function(_Saved value) saved,
-    required TResult Function(_Updating value) updating,
-    required TResult Function(_Updated value) updated,
-  }) {
-    return saved(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_Saving value)? saving,
-    TResult? Function(_Saved value)? saved,
-    TResult? Function(_Updating value)? updating,
-    TResult? Function(_Updated value)? updated,
-  }) {
-    return saved?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
-    TResult Function(_Saving value)? saving,
-    TResult Function(_Saved value)? saved,
-    TResult Function(_Updating value)? updating,
-    TResult Function(_Updated value)? updated,
-    required TResult orElse(),
-  }) {
-    if (saved != null) {
-      return saved(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Saved implements TrainingState {
-  const factory _Saved({required final MessageBody messageBody}) = _$SavedImpl;
-
-  MessageBody get messageBody;
-  @JsonKey(ignore: true)
-  _$$SavedImplCopyWith<_$SavedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$UpdatingImplCopyWith<$Res> {
-  factory _$$UpdatingImplCopyWith(
-          _$UpdatingImpl value, $Res Function(_$UpdatingImpl) then) =
-      __$$UpdatingImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$UpdatingImplCopyWithImpl<$Res>
-    extends _$TrainingStateCopyWithImpl<$Res, _$UpdatingImpl>
-    implements _$$UpdatingImplCopyWith<$Res> {
-  __$$UpdatingImplCopyWithImpl(
-      _$UpdatingImpl _value, $Res Function(_$UpdatingImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$UpdatingImpl implements _Updating {
-  const _$UpdatingImpl();
-
-  @override
-  String toString() {
-    return 'TrainingState.updating()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$UpdatingImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<TrainingDetails> trainings) loaded,
-    required TResult Function(String message) error,
-    required TResult Function() saving,
-    required TResult Function(MessageBody messageBody) saved,
-    required TResult Function() updating,
-    required TResult Function(MessageBody messageBody) updated,
-  }) {
-    return updating();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<TrainingDetails> trainings)? loaded,
-    TResult? Function(String message)? error,
-    TResult? Function()? saving,
-    TResult? Function(MessageBody messageBody)? saved,
-    TResult? Function()? updating,
-    TResult? Function(MessageBody messageBody)? updated,
-  }) {
-    return updating?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<TrainingDetails> trainings)? loaded,
-    TResult Function(String message)? error,
-    TResult Function()? saving,
-    TResult Function(MessageBody messageBody)? saved,
-    TResult Function()? updating,
-    TResult Function(MessageBody messageBody)? updated,
-    required TResult orElse(),
-  }) {
-    if (updating != null) {
-      return updating();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Error value) error,
-    required TResult Function(_Saving value) saving,
-    required TResult Function(_Saved value) saved,
-    required TResult Function(_Updating value) updating,
-    required TResult Function(_Updated value) updated,
-  }) {
-    return updating(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_Saving value)? saving,
-    TResult? Function(_Saved value)? saved,
-    TResult? Function(_Updating value)? updating,
-    TResult? Function(_Updated value)? updated,
-  }) {
-    return updating?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
-    TResult Function(_Saving value)? saving,
-    TResult Function(_Saved value)? saved,
-    TResult Function(_Updating value)? updating,
-    TResult Function(_Updated value)? updated,
-    required TResult orElse(),
-  }) {
-    if (updating != null) {
-      return updating(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Updating implements TrainingState {
-  const factory _Updating() = _$UpdatingImpl;
-}
-
-/// @nodoc
-abstract class _$$UpdatedImplCopyWith<$Res> {
-  factory _$$UpdatedImplCopyWith(
-          _$UpdatedImpl value, $Res Function(_$UpdatedImpl) then) =
-      __$$UpdatedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({MessageBody messageBody});
-}
-
-/// @nodoc
-class __$$UpdatedImplCopyWithImpl<$Res>
-    extends _$TrainingStateCopyWithImpl<$Res, _$UpdatedImpl>
-    implements _$$UpdatedImplCopyWith<$Res> {
-  __$$UpdatedImplCopyWithImpl(
-      _$UpdatedImpl _value, $Res Function(_$UpdatedImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? messageBody = null,
-  }) {
-    return _then(_$UpdatedImpl(
-      messageBody: null == messageBody
-          ? _value.messageBody
-          : messageBody // ignore: cast_nullable_to_non_nullable
-              as MessageBody,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$UpdatedImpl implements _Updated {
-  const _$UpdatedImpl({required this.messageBody});
-
-  @override
-  final MessageBody messageBody;
-
-  @override
-  String toString() {
-    return 'TrainingState.updated(messageBody: $messageBody)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$UpdatedImpl &&
-            (identical(other.messageBody, messageBody) ||
-                other.messageBody == messageBody));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, messageBody);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$UpdatedImplCopyWith<_$UpdatedImpl> get copyWith =>
-      __$$UpdatedImplCopyWithImpl<_$UpdatedImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<TrainingDetails> trainings) loaded,
-    required TResult Function(String message) error,
-    required TResult Function() saving,
-    required TResult Function(MessageBody messageBody) saved,
-    required TResult Function() updating,
-    required TResult Function(MessageBody messageBody) updated,
-  }) {
-    return updated(messageBody);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<TrainingDetails> trainings)? loaded,
-    TResult? Function(String message)? error,
-    TResult? Function()? saving,
-    TResult? Function(MessageBody messageBody)? saved,
-    TResult? Function()? updating,
-    TResult? Function(MessageBody messageBody)? updated,
-  }) {
-    return updated?.call(messageBody);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<TrainingDetails> trainings)? loaded,
-    TResult Function(String message)? error,
-    TResult Function()? saving,
-    TResult Function(MessageBody messageBody)? saved,
-    TResult Function()? updating,
-    TResult Function(MessageBody messageBody)? updated,
-    required TResult orElse(),
-  }) {
-    if (updated != null) {
-      return updated(messageBody);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Error value) error,
-    required TResult Function(_Saving value) saving,
-    required TResult Function(_Saved value) saved,
-    required TResult Function(_Updating value) updating,
-    required TResult Function(_Updated value) updated,
-  }) {
-    return updated(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_Saving value)? saving,
-    TResult? Function(_Saved value)? saved,
-    TResult? Function(_Updating value)? updating,
-    TResult? Function(_Updated value)? updated,
-  }) {
-    return updated?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
-    TResult Function(_Saving value)? saving,
-    TResult Function(_Saved value)? saved,
-    TResult Function(_Updating value)? updating,
-    TResult Function(_Updated value)? updated,
-    required TResult orElse(),
-  }) {
-    if (updated != null) {
-      return updated(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Updated implements TrainingState {
-  const factory _Updated({required final MessageBody messageBody}) =
-      _$UpdatedImpl;
-
-  MessageBody get messageBody;
-  @JsonKey(ignore: true)
-  _$$UpdatedImplCopyWith<_$UpdatedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

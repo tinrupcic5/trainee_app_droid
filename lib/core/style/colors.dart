@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 class CustomColors {
   static const blueCardColor = Color(0xFF5E9EFF);
   static const purpleCardColor = Color(0xFF7850F0);
+  static const blueCalendarCardColor = Color.fromARGB(255, 89, 124, 177);
+  static const redCalendarCardColor = Color.fromARGB(255, 194, 125, 102);
 }
 
 //Light palette

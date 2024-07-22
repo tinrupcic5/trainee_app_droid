@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:trainee_app/core/di.dart';
 import 'package:trainee_app/core/localization_extension.dart';
-import 'package:trainee_app/core/route_generator.dart';
 import 'package:trainee_app/core/style/colors.dart';
 import 'package:trainee_app/core/style/style_extensions.dart';
 import 'package:trainee_app/features/auth/data/api/model/user/userdetails/UserDetails.dart';
 import 'package:trainee_app/features/auth/presentation/util/SharedPrefsManager.dart';
-import 'package:trainee_app/features/common/presentation/widget/custom_snackbar.dart';
 import 'package:trainee_app/features/locations/presentation/screen/calendar_screen.dart';
 import 'package:trainee_app/features/locations/presentation/screen/home_summary_screen.dart';
 import 'package:trainee_app/features/locations/presentation/screen/my_card_screen.dart';
@@ -44,28 +42,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    ref.listen(logoutNotifierProvider, (_, state) {
-      state.whenOrNull(
-        unauthenticated: (error, shouldShow) {
-          setState(() => _isLoading = false);
-          if (shouldShow) {
-            WidgetsBinding.instance.addPostFrameCallback(
-              (_) => CustomSnackBar.show(
-                  context, context.localWrongEmailOrPassword),
-            );
-          }
-        },
-        loading: () => setState(() => _isLoading = true),
-        logout: (_) {
-          setState(() => _isLoading = true);
-          WidgetsBinding.instance.addPostFrameCallback(
-            (_) => Navigator.of(context)
-                .pushReplacementNamed(RouteGenerator.signInScreen),
-          );
-        },
-      );
-    });
-
     return Scaffold(
       appBar: AppBar(
         title: Text(getScreenName(context)),
@@ -232,6 +208,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   void _logout() async {
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
-    await ref.read(logoutNotifierProvider.notifier).attemptLogingOut();
+    await ref.read(logoutNotifierProvider.notifier).attemptLogingOut(context);
   }
 }

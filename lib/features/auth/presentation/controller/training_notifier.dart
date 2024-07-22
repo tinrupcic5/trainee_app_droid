@@ -1,7 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:intl/intl.dart';
 import 'package:trainee_app/core/di.dart';
-import 'package:trainee_app/features/auth/data/api/model/user/userdetails/UserDetails.dart';
 import 'package:trainee_app/features/auth/presentation/controller/state/training_state.dart';
 import 'package:trainee_app/features/auth/presentation/util/SharedPrefsManager.dart';
 import 'package:trainee_app/features/training/data/domain/service/training_service.dart';
@@ -12,7 +10,6 @@ class TrainingNotifier extends Notifier<TrainingState> {
 
   TrainingNotifier() {
     _sharedPrefsManager = SharedPrefsManager();
-    _attemptGettingAllTrainingForDate();
   }
 
   @override
@@ -21,24 +18,21 @@ class TrainingNotifier extends Notifier<TrainingState> {
     return const TrainingState.loading();
   }
 
-  Future<void> _attemptGettingAllTrainingForDate() async {
+  Future<void> gettingAllTrainingForDate(String date) async {
     state = const TrainingState.loading();
-
-    final DateTime selectedDay =
-        DateTime.now(); // replace with actual selected date
 
     final userDetails =
         await _sharedPrefsManager.getUserDetailsFromLocalCache();
 
     if (userDetails == null) {
-      state = TrainingState.error('User details not found.');
+      state = const TrainingState.error('User details not found.');
       return;
     }
 
     final result = await _trainingService.getAllTrainingForDate(
       userDetails.id!,
       userDetails.schoolDetails.id!,
-      selectedDay.toString(),
+      date,
     );
 
     result.fold(

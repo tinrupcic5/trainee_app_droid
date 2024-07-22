@@ -1,5 +1,7 @@
 import 'package:dartz/dartz.dart';
+import 'package:trainee_app/core/error/failure.dart';
 import 'package:trainee_app/features/common/MessageBody.dart';
+import 'package:trainee_app/features/locations/presentation/controller/card/calendar_items.dart';
 import 'package:trainee_app/features/training/data/api/model/Training.dart';
 import 'package:trainee_app/features/training/data/api/model/TrainingCalendarRequest.dart';
 import 'package:trainee_app/features/training/data/api/model/TrainingRequest.dart';
@@ -14,7 +16,7 @@ class TrainingService {
           int schoolDetailsId) =>
       _trainingRepository.getAllTrainingForToday(schoolDetailsId);
 
-  Future<Either<Exception, List<TrainingDetails>>> getAllTrainingForDate(
+  Future<Either<Failure, List<TrainingDetails>>> getAllTrainingForDate(
           int userDetailsId, int schoolDetailsId, String date) =>
       _trainingRepository.getAllTrainingForDate(
           userDetailsId, schoolDetailsId, date);
@@ -35,4 +37,7 @@ class TrainingService {
   Future<Either<Exception, MessageBody>> updateTraining(
           TrainingRequest request) =>
       _trainingRepository.updateTraining(request);
+
+  gettingAllTrainingForDate(
+      CalendarItemModel Function(dynamic training) param0) {}
 }

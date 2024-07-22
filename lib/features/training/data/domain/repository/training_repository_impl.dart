@@ -1,4 +1,6 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
+import 'package:trainee_app/core/error/failure.dart';
 import 'package:trainee_app/features/common/MessageBody.dart';
 import 'package:trainee_app/features/training/data/api/model/Training.dart';
 import 'package:trainee_app/features/training/data/api/model/TrainingCalendarRequest.dart';
@@ -14,10 +16,16 @@ class TrainingRepositoryImpl implements TrainingRepository {
   );
 
   @override
-  Future<Either<Exception, List<TrainingDetails>>> getAllTrainingForDate(
-      int userDetailsId, int schoolDetailsId, String date) {
-    // TODO: implement getAllTrainingForDate
-    throw UnimplementedError();
+  Future<Either<Failure, List<TrainingDetails>>> getAllTrainingForDate(
+      int userDetailsId, int schoolDetailsId, String date) async {
+    try {
+      final response = await _trainingApi.getAllTrainingForDate(
+          userDetailsId, schoolDetailsId, date);
+      return Right(response);
+    } on DioException catch (_) {
+      print("response trainingApi :  $_trainingApi");
+      return const Left(Failure.unauthorized());
+    }
   }
 
   @override
