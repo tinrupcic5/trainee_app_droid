@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:trainee_app/features/locations/presentation/controller/card/notification_card.dart';
+import 'package:trainee_app/features/locations/presentation/controller/card/picture_card.dart';
+import 'package:trainee_app/features/locations/presentation/controller/card/picture_item.dart';
+import 'package:trainee_app/features/locations/presentation/controller/card/video_card.dart';
+import 'package:trainee_app/features/locations/presentation/controller/card/video_item.dart';
 
 class HomeSummaryScreen extends ConsumerWidget {
   const HomeSummaryScreen({super.key});
@@ -50,30 +54,10 @@ class HomeSummaryScreen extends ConsumerWidget {
   }
 }
 
-class NotificationItem {
-  final String title;
-  final String description;
-
-  NotificationItem({required this.title, required this.description});
-}
-
-class VideoItem {
-  final String url;
-  final String thumbnailUrl;
-
-  VideoItem({required this.url, required this.thumbnailUrl});
-}
-
-class PictureItem {
-  final String url;
-
-  PictureItem({required this.url});
-}
-
 class DataService {
   Future<List<NotificationItem>> fetchNotifications() async {
     // Simulate network delay
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
     return [
       NotificationItem(
           title: 'New Comment',
@@ -86,83 +70,29 @@ class DataService {
 
   Future<List<VideoItem>> fetchVideos() async {
     // Simulate network delay
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
     return [
       VideoItem(
-          url:
-              'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
-          thumbnailUrl: 'https://example.com/thumbnail1.jpg'),
+          videoUri: Uri.parse(
+              'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'),
+          videoComment: "commondatastorage"),
       VideoItem(
-          url: 'https://example.com/video2.mp4',
-          thumbnailUrl: 'https://example.com/thumbnail2.jpg'),
+          videoUri: Uri.parse(
+              'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4'),
+          videoComment: "GITHUB"),
     ];
   }
 
   Future<List<PictureItem>> fetchPictures() async {
     // Simulate network delay
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
     return [
       PictureItem(
-          url: 'https://upload.wikimedia.org/wikipedia/en/a/a9/Example.jpg'),
+          url: 'https://upload.wikimedia.org/wikipedia/en/a/a9/Example.jpg',
+          pictureComment: "wikimedia"),
       PictureItem(
-          url: 'https://upload.wikimedia.org/wikipedia/en/a/a9/Example.jpg'),
+          url: 'https://upload.wikimedia.org/wikipedia/en/a/a9/Example.jpg',
+          pictureComment: "Example,ExampleExampleExampleExampleExample"),
     ];
-  }
-}
-
-class NotificationCard extends StatelessWidget {
-  final NotificationItem notification;
-
-  const NotificationCard({required this.notification, super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.all(8.0),
-      child: ListTile(
-        title: Text(notification.title,
-            style: TextStyle(fontWeight: FontWeight.bold)),
-        subtitle: Text(notification.description),
-      ),
-    );
-  }
-}
-
-class VideoCard extends StatelessWidget {
-  final VideoItem video;
-
-  const VideoCard({required this.video, super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.all(8.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Image.network(video.thumbnailUrl),
-          ListTile(
-            title: Text('Video'),
-            onTap: () {
-              // Implement video player navigation
-            },
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class PictureCard extends StatelessWidget {
-  final PictureItem picture;
-
-  const PictureCard({required this.picture, super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.all(8.0),
-      child: Image.network(picture.url),
-    );
   }
 }
