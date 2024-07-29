@@ -192,6 +192,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 Navigator.pop(context);
               },
             ),
+            Spacer(),
             ListTile(
               leading: const Icon(Icons.logout_rounded),
               title: Text("Logout"),
@@ -202,7 +203,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 Navigator.pop(context);
               },
             ),
-            Spacer(),
             Container(
               padding: const EdgeInsets.all(8.0),
               child: Row(
@@ -219,7 +219,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             _app_name,
                             style: const TextStyle(
                               fontSize: 12,
-                              fontWeight: FontWeight.bold,
                               color: Colors.black,
                             ),
                           ),
