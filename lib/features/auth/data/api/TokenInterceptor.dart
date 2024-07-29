@@ -16,6 +16,7 @@ class TokenInterceptor extends Interceptor {
       print("Requesting for token");
       final token = await _prefsManager.getUserTokenFromLocalCache();
       options.headers['Authorization'] = 'Bearer $token';
+      print("Requesting for token 2 $token");
     } catch (e) {
       print('Error fetching token from cache: $e');
     }
@@ -87,12 +88,18 @@ class TokenInterceptor extends Interceptor {
   }
 }
 
-Dio createDioWithTokenInterceptor() {
-  final dio = Dio(BaseOptions(baseUrl: AppStrings.baseUrl));
-  dio.interceptors.add(TokenInterceptor());
-  return dio;
-}
-
 Dio createDioWithoutTokenInterceptor() {
   return Dio();
+}
+
+Dio createDioWithTokenInterceptor() {
+  final dio = Dio(BaseOptions(
+    baseUrl: AppStrings.baseUrl,
+    connectTimeout:
+        Duration(milliseconds: 5000), // Connection timeout in milliseconds
+    receiveTimeout: Duration(milliseconds: 5000), // t in milliseconds
+  ));
+
+  dio.interceptors.add(TokenInterceptor());
+  return dio;
 }

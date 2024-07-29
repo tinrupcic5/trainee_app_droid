@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:trainee_app/features/common/MessageBody.dart';
+import 'package:trainee_app/features/common/message_body.dart';
 import 'package:trainee_app/features/training/data/api/model/Training.dart';
 import 'package:trainee_app/features/auth/presentation/util/AppStrings.dart';
 import 'package:trainee_app/features/training/data/api/model/TrainingCalendarRequest.dart';

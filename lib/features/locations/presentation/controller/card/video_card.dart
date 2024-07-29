@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:trainee_app/features/auth/data/api/model/user/userLogin/UserLoginResponse.dart';
+import 'package:trainee_app/features/files/domain/file_uri_response.dart';
 import 'package:trainee_app/features/locations/presentation/controller/card/FullScreenVideoPlayer.dart';
-import 'package:trainee_app/features/locations/presentation/controller/card/video_item.dart';
 import 'package:trainee_app/features/locations/presentation/manager/video_manager.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoCard extends StatefulWidget {
-  final VideoItem video;
+  final FileUriResponse video;
+  final UserLoginResponse userLogintoken;
 
-  const VideoCard({required this.video, Key? key}) : super(key: key);
+  const VideoCard({required this.video, Key? key, required this.userLogintoken})
+      : super(key: key);
 
   @override
   _VideoCardState createState() => _VideoCardState();
@@ -15,7 +18,6 @@ class VideoCard extends StatefulWidget {
 
 class _VideoCardState extends State<VideoCard> {
   late VideoPlayerController _controller;
-  late Future<void> _initializeVideoPlayerFuture;
   bool _isPlaying = false;
   bool _showRewindButton = false;
   bool _isMuted = false;
@@ -23,14 +25,21 @@ class _VideoCardState extends State<VideoCard> {
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.networkUrl(widget.video.videoUri);
-    _initializeVideoPlayerFuture = _controller.initialize();
-    _controller.setLooping(true);
-    _controller.addListener(_videoListener);
+    _controller = VideoPlayerController.networkUrl(
+      Uri.parse(widget.video.uri!),
+      httpHeaders: {
+        'Authorization':
+            'Bearer ${widget.userLogintoken.token}', // Replace with actual token retrieval
+      },
+    )..initialize().then((_) {
+        setState(() {});
+        // Remove or comment out the following line to prevent autoplay
+        // _controller.play(); // Optionally start playing immediately
+        _controller.addListener(_videoListener);
+      });
   }
 
   void _videoListener() {
-    // Ensure widget is still mounted
     if (!mounted) return;
 
     final isPlaying = _controller.value.isPlaying;
@@ -48,7 +57,6 @@ class _VideoCardState extends State<VideoCard> {
 
   @override
   void dispose() {
-    // Ensure controller is properly disposed
     _controller.removeListener(_videoListener);
     _controller.dispose();
     super.dispose();
@@ -106,22 +114,16 @@ class _VideoCardState extends State<VideoCard> {
             child: Stack(
               clipBehavior: Clip.none,
               children: [
-                FutureBuilder(
-                  future: _initializeVideoPlayerFuture,
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.done) {
-                      return ClipRRect(
-                        borderRadius: BorderRadius.circular(16.0),
-                        child: AspectRatio(
-                          aspectRatio: _controller.value.aspectRatio,
-                          child: VideoPlayer(_controller),
-                        ),
-                      );
-                    } else {
-                      return const Center(child: CircularProgressIndicator());
-                    }
-                  },
-                ),
+                if (_controller.value.isInitialized)
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(16.0),
+                    child: AspectRatio(
+                      aspectRatio: _controller.value.aspectRatio,
+                      child: VideoPlayer(_controller),
+                    ),
+                  )
+                else
+                  const Center(child: CircularProgressIndicator()),
                 if (!_isPlaying && !_showRewindButton)
                   Positioned(
                     top: 0,
@@ -179,7 +181,7 @@ class _VideoCardState extends State<VideoCard> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              widget.video.videoComment,
+              widget.video.contentComment!,
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
           ),

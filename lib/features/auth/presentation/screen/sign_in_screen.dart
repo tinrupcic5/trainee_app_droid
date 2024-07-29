@@ -38,12 +38,13 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
           }
         },
         loading: () => setState(() => _isLoading = true),
-        authenticated: (_) {
+        authenticated: (user) {
           setState(() => _isLoading = true);
-          WidgetsBinding.instance.addPostFrameCallback(
-            (_) => Navigator.of(context)
-                .pushReplacementNamed(RouteGenerator.homeScreen),
-          );
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            RouteGenerator.setUserLoginToken(user);
+            Navigator.of(context)
+                .pushReplacementNamed(RouteGenerator.homeScreen);
+          });
         },
       );
     });

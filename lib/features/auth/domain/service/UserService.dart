@@ -4,7 +4,7 @@ import 'package:trainee_app/features/auth/data/api/model/user/UserLogin.dart';
 import 'package:trainee_app/features/auth/data/api/model/user/UserRegisterRequest.dart';
 import 'package:trainee_app/features/auth/data/api/model/user/userLogin/UserLoginResponse.dart';
 import 'package:trainee_app/features/auth/domain/repository/user_repository.dart';
-import 'package:trainee_app/features/common/MessageBody.dart';
+import 'package:trainee_app/features/common/message_body.dart';
 
 class UserService {
   final UserRepository _userRepository;

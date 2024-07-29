@@ -25,7 +25,7 @@ class AuthNotifier extends Notifier<AuthState> {
     final currentUser = await _sharedPrefsManager.getUserLoginFromLocalCache();
     if (currentUser.userName.isNotEmpty && currentUser.password.isNotEmpty) {
       print("currentUser: $currentUser");
-      print("_attempt Auto Login");
+      print("_attempt AutoLogin");
 
       await login(currentUser.userName, currentUser.password);
     } else {

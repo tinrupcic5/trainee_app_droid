@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:trainee_app/core/error/failure.dart';
-import 'package:trainee_app/features/common/MessageBody.dart';
+import 'package:trainee_app/features/common/message_body.dart';
 import 'package:trainee_app/features/training/data/api/model/Training.dart';
 import 'package:trainee_app/features/training/data/api/model/TrainingCalendarRequest.dart';
 import 'package:trainee_app/features/training/data/api/model/TrainingRequest.dart';

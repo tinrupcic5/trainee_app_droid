@@ -25,7 +25,7 @@ class _VideoCardState extends State<VideoCard> {
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.networkUrl(widget.video.videoUri);
+    _controller = VideoPlayerController.networkUrl(Uri.parse(widget.video.url));
     _initializeVideoPlayerFuture = _controller.initialize();
     _controller.setLooping(true);
     _controller.addListener(_videoListener);

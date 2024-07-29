@@ -74,66 +74,78 @@ class _FullScreenVideoPlayerState extends State<FullScreenVideoPlayer> {
           },
         ),
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: GestureDetector(
-              onTap: _togglePlayPause,
-              child: Stack(
-                children: [
-                  Center(
-                    child: AspectRatio(
-                      aspectRatio: widget.controller.value.aspectRatio,
-                      child: VideoPlayer(widget.controller),
-                    ),
-                  ),
-                  if (!_isPlaying)
+      body: GestureDetector(
+        onHorizontalDragEnd: (details) {
+          if (details.velocity.pixelsPerSecond.dx > 0) {
+            // Swipe to the right
+            Navigator.pop(context);
+          }
+        },
+        child: Column(
+          children: [
+            Expanded(
+              child: GestureDetector(
+                onTap: _togglePlayPause,
+                child: Stack(
+                  children: [
                     Center(
-                      child: IconButton(
-                        icon: const Icon(Icons.play_arrow,
-                            size: 50, color: Colors.white),
-                        onPressed: _togglePlayPause,
+                      child: AspectRatio(
+                        aspectRatio: widget.controller.value.aspectRatio,
+                        child: VideoPlayer(widget.controller),
                       ),
                     ),
+                    if (!_isPlaying)
+                      Center(
+                        child: IconButton(
+                          icon: const Icon(Icons.play_arrow,
+                              size: 50, color: Colors.white),
+                          onPressed: _togglePlayPause,
+                        ),
+                      ),
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                children: [
+                  Text(
+                    Duration(seconds: _sliderValue.toInt())
+                        .toString()
+                        .split('.')
+                        .first,
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                  Expanded(
+                    child: Slider(
+                      value: _sliderValue,
+                      min: 0,
+                      max:
+                          widget.controller.value.duration.inSeconds.toDouble(),
+                      onChanged: (value) {
+                        setState(() {
+                          _sliderValue = value;
+                        });
+                      },
+                      onChangeEnd: (value) {
+                        widget.controller
+                            .seekTo(Duration(seconds: value.toInt()));
+                      },
+                    ),
+                  ),
+                  Text(
+                    widget.controller.value.duration
+                        .toString()
+                        .split('.')
+                        .first,
+                    style: const TextStyle(color: Colors.white),
+                  ),
                 ],
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              children: [
-                Text(
-                  Duration(seconds: _sliderValue.toInt())
-                      .toString()
-                      .split('.')
-                      .first,
-                  style: const TextStyle(color: Colors.white),
-                ),
-                Expanded(
-                  child: Slider(
-                    value: _sliderValue,
-                    min: 0,
-                    max: widget.controller.value.duration.inSeconds.toDouble(),
-                    onChanged: (value) {
-                      setState(() {
-                        _sliderValue = value;
-                      });
-                    },
-                    onChangeEnd: (value) {
-                      widget.controller
-                          .seekTo(Duration(seconds: value.toInt()));
-                    },
-                  ),
-                ),
-                Text(
-                  widget.controller.value.duration.toString().split('.').first,
-                  style: const TextStyle(color: Colors.white),
-                ),
-              ],
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
       bottomNavigationBar: BottomAppBar(
         color: Colors.black.withOpacity(0.5),

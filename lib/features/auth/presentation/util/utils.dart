@@ -1,4 +1,8 @@
+import 'dart:io';
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:trainee_app/core/localization_extension.dart';
 
@@ -19,7 +23,7 @@ bool _isNotValidEmailAddress(final String value) => !RegExp(
 String? validatePassword(final BuildContext context, final String? value) {
   if (value == null || value.isEmpty) {
     return context.localPasswordEmptyValidation;
-  } else if (value.length < 4) {
+  } else if (value.length < 2) {
     return context.localPasswordLengthValidation;
   } else {
     return null;

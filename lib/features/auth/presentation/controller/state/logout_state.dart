@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:trainee_app/core/error/failure.dart';
-import 'package:trainee_app/features/common/MessageBody.dart';
+import 'package:trainee_app/features/common/message_body.dart';
 
 part 'logout_state.freezed.dart';
 

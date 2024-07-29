@@ -1,6 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:trainee_app/features/common/MessageBody.dart';
-import 'package:trainee_app/features/locations/presentation/controller/card/calendar_items.dart';
 import 'package:trainee_app/features/training/data/api/model/Training.dart';
 
 part 'training_state.freezed.dart';

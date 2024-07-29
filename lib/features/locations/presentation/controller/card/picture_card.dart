@@ -1,11 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:trainee_app/features/auth/data/api/model/user/userLogin/UserLoginResponse.dart';
+import 'package:trainee_app/features/files/domain/file_uri_response.dart';
 import 'package:trainee_app/features/locations/presentation/controller/card/FullScreenImagePage.dart';
-import 'package:trainee_app/features/locations/presentation/controller/card/picture_item.dart';
 
-class PictureCard extends StatelessWidget {
-  final PictureItem picture;
+class PictureCard extends StatefulWidget {
+  final FileUriResponse picture;
+  final UserLoginResponse userLogintoken;
 
-  const PictureCard({required this.picture, super.key});
+  const PictureCard({
+    required this.picture,
+    required this.userLogintoken,
+    super.key,
+  });
+
+  @override
+  _PictureCardState createState() => _PictureCardState();
+}
+
+class _PictureCardState extends State<PictureCard> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  // Method to fetch image
+  Widget Image_fetchImage() {
+    return Image.network(
+      widget.picture.uri!,
+      headers: {
+        'Authorization': 'Bearer ${widget.userLogintoken.token}',
+      },
+      fit: BoxFit
+          .contain, // Use BoxFit.contain to ensure the image scales properly
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,29 +43,32 @@ class PictureCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Use GestureDetector to handle taps
+          // Center the image and use AspectRatio
           GestureDetector(
             onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => FullScreenImagePage(url: picture.url),
+                  builder: (context) => FullScreenImagePage(
+                    url: widget.picture.uri!,
+                    userLogintoken: widget.userLogintoken,
+                    contentComment: widget.picture.contentComment!,
+                  ),
                 ),
               );
             },
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(12.0),
-              child: Image.network(
-                picture.url,
-                fit: BoxFit.cover,
-                width: double.infinity,
+            child: AspectRatio(
+              aspectRatio: 16 / 9, // Example aspect ratio; adjust as needed
+              child: Container(
+                alignment: Alignment.center,
+                child: Image_fetchImage(),
               ),
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              picture.pictureComment,
+              widget.picture.contentComment!,
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16.0,

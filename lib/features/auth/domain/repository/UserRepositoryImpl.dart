@@ -5,7 +5,7 @@ import 'package:trainee_app/features/auth/data/api/auth_api.dart';
 import 'package:trainee_app/features/auth/data/api/model/user/UserLogin.dart';
 import 'package:trainee_app/features/auth/data/api/model/user/userLogin/UserLoginResponse.dart';
 import 'package:trainee_app/features/auth/domain/repository/user_repository.dart';
-import 'package:trainee_app/features/common/MessageBody.dart';
+import 'package:trainee_app/features/common/message_body.dart';
 
 class UserRepositoryImpl implements UserRepository {
   final AuthAPI _authApi;
