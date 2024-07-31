@@ -1,16 +1,12 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:trainee_app/core/di.dart';
 import 'package:trainee_app/features/auth/presentation/controller/state/files_state.dart';
-import 'package:trainee_app/features/auth/presentation/util/SharedPrefsManager.dart';
 import 'package:trainee_app/features/files/domain/service/files_service.dart';
 
 class FilesNotifier extends Notifier<FilesState> {
   late final FilesService _filesService;
-  late final SharedPrefsManager _sharedPrefsManager;
 
-  FilesNotifier() {
-    _sharedPrefsManager = SharedPrefsManager();
-  }
+  FilesNotifier() {}
 
   @override
   FilesState build() {
@@ -22,15 +18,7 @@ class FilesNotifier extends Notifier<FilesState> {
     state = const FilesState.loading();
 
     try {
-      final userDetails =
-          await _sharedPrefsManager.getUserDetailsFromLocalCache();
-      if (userDetails == null) {
-        state = const FilesState.error('User details not found.');
-        return;
-      }
-
-      final result =
-          await _filesService.getAllFilesAndNotifications(userDetails.user.id!);
+      final result = await _filesService.getAllFilesAndNotifications(userId);
 
       result.fold(
         (error) {

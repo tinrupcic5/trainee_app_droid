@@ -19,7 +19,6 @@ class _HomeSummaryScreenState extends ConsumerState<HomeSummaryScreen> {
   @override
   void initState() {
     super.initState();
-    // Using Future.microtask to run the method after the build
     Future.microtask(() => _fetchFilesAndNotifications());
   }
 
@@ -36,6 +35,7 @@ class _HomeSummaryScreenState extends ConsumerState<HomeSummaryScreen> {
   @override
   Widget build(BuildContext context) {
     final filesState = ref.watch(fileTransferNotifierProvider);
+    final profileImageState = ref.watch(profileImageNotifierProvider);
 
     final notifications = filesState.notifications ?? [];
     final sortedNotifications = notifications.toList()
@@ -67,8 +67,7 @@ class _HomeSummaryScreenState extends ConsumerState<HomeSummaryScreen> {
                                   picture: notification,
                                   userLogintoken: widget.userLogintoken);
                             default:
-                              return const SizedBox
-                                  .shrink(); // Or any fallback widget
+                              return const SizedBox.shrink();
                           }
                         },
                       ),

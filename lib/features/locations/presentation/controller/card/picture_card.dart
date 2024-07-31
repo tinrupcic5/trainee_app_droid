@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:trainee_app/features/auth/data/api/model/user/userLogin/UserLoginResponse.dart';
 import 'package:trainee_app/features/files/domain/file_uri_response.dart';
 import 'package:trainee_app/features/locations/presentation/controller/card/FullScreenImagePage.dart';
@@ -24,15 +23,13 @@ class _PictureCardState extends State<PictureCard> {
     super.initState();
   }
 
-  // Method to fetch image
-  Widget Image_fetchImage() {
+  Widget fetchImage() {
     return Image.network(
       widget.picture.uri!,
       headers: {
         'Authorization': 'Bearer ${widget.userLogintoken.token}',
       },
-      fit: BoxFit
-          .contain, // Use BoxFit.contain to ensure the image scales properly
+      fit: BoxFit.contain,
     );
   }
 
@@ -58,10 +55,10 @@ class _PictureCardState extends State<PictureCard> {
               );
             },
             child: AspectRatio(
-              aspectRatio: 16 / 9, // Example aspect ratio; adjust as needed
+              aspectRatio: 16 / 9,
               child: Container(
                 alignment: Alignment.center,
-                child: Image_fetchImage(),
+                child: fetchImage(),
               ),
             ),
           ),

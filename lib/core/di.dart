@@ -12,25 +12,29 @@ import 'package:trainee_app/features/auth/domain/service/ApplicationPropsService
 import 'package:trainee_app/features/auth/presentation/controller/auth_notifier.dart';
 import 'package:trainee_app/features/auth/presentation/controller/files_notifier.dart';
 import 'package:trainee_app/features/auth/presentation/controller/logout_notifier.dart';
+import 'package:trainee_app/features/auth/presentation/controller/profile_image_notifier.dart';
 import 'package:trainee_app/features/auth/presentation/controller/state/auth_state.dart';
 import 'package:trainee_app/features/auth/presentation/controller/state/files_state.dart';
 import 'package:trainee_app/features/auth/presentation/controller/state/logout_state.dart';
+import 'package:trainee_app/features/auth/presentation/controller/state/profile_image_state.dart';
 import 'package:trainee_app/features/auth/presentation/controller/state/training_state.dart';
 import 'package:trainee_app/features/auth/presentation/controller/state/application_props_state.dart';
 import 'package:trainee_app/features/auth/presentation/controller/training_notifier.dart';
 import 'package:trainee_app/features/auth/presentation/controller/application_props_notifier.dart';
 import 'package:trainee_app/features/files/data/api/file_details_api.dart';
+import 'package:trainee_app/features/files/data/api/profile_image_api.dart';
 import 'package:trainee_app/features/files/domain/repository/files_repository.dart';
 import 'package:trainee_app/features/files/domain/repository/files_repository_impl.dart';
+import 'package:trainee_app/features/files/domain/repository/profile_image_repository.dart';
+import 'package:trainee_app/features/files/domain/repository/profile_image_repository_impl.dart';
 import 'package:trainee_app/features/files/domain/service/files_service.dart';
+import 'package:trainee_app/features/files/domain/service/profile_image_service.dart';
 import 'package:trainee_app/features/training/data/api/training_api.dart';
 import 'package:trainee_app/features/training/data/domain/repository/training_repository.dart';
 import 'package:trainee_app/features/training/data/domain/repository/training_repository_impl.dart';
 import 'package:trainee_app/features/training/data/domain/service/training_service.dart';
 
 // // // ***************** EXTERNAL LIBRARIES ***************** //
-// // final firebaseAuthProvider =
-// //     Provider<FirebaseAuth>((ref) => FirebaseAuth.instance);
 
 final dioProviderWithToken =
     Provider<Dio>((ref) => createDioWithTokenInterceptor());
@@ -39,13 +43,6 @@ final dioProviderWithoutToken =
 // final dioProvider = Provider<Dio>((ref) => dioProviderWithToken);
 
 // // // ***************** CONVERTERS ***************** //
-// // final sightDtoToEntityConverterProvider = Provider<SightDtoToEntityConverter>(
-// //   (ref) => SightDtoToEntityConverter(),
-// // );
-
-// // final sightEntityToDtoConverterProvider = Provider<SightEntityToDtoConverter>(
-// //   (ref) => SightEntityToDtoConverter(),
-// // );
 
 // // // ***************** DATASOURCE ***************** //
 
@@ -64,10 +61,9 @@ final filesApiProvider = Provider<FileDetailsAPI>(
 final versionApiProvider = Provider<ApplicationPropsAPI>(
   (ref) => ApplicationPropsAPI(ref.watch(dioProviderWithoutToken)),
 );
-
-// // final hiveDatabaseManagerProvider = Provider<HiveDatabaseManager>(
-// //   (ref) => HiveDatabaseManager(),
-// // );
+final profileImageApiProvider = Provider<ProfileImageAPI>(
+  (ref) => ProfileImageAPI(ref.watch(dioProviderWithToken)),
+);
 
 // // // ***************** REPOSITORY ***************** //
 final userRepositoryProvider = Provider<UserRepository>(
@@ -85,19 +81,12 @@ final filesRepositoryProviderWithToken = Provider<FilesRepository>(
 final versionRepositoryProviderWithToken = Provider<ApplicationPropsRepository>(
   (ref) => ApplicationPropsRepositoryImpl(ref.watch(versionApiProvider)),
 );
-
-// // final sightRepositoryProvider = Provider<SightRepository>(
-// //   (ref) => SightRepositoryImpl(
-// //     ref.watch(sightApiProvider),
-// //     ref.watch(hiveDatabaseManagerProvider),
-// //     ref.watch(sightDtoToEntityConverterProvider),
-// //   ),
-// // );
+final profileImageRepositoryProviderWithToken =
+    Provider<ProfileImageRepository>(
+  (ref) => ProfileImageRepositoryImpl(ref.watch(profileImageApiProvider)),
+);
 
 // // // // // ***************** USE CASE SERVICES***************** //
-// final authUseCasesProvider = Provider<UserService>(
-//   (ref) => UserService(ref.watch(userRepositoryProvider)),
-// );
 
 final userServiceProvider = Provider<UserService>(
   (ref) => UserService(ref.watch(userRepositoryProvider)),
@@ -114,6 +103,10 @@ final filesServiceProviderWithToken = Provider<FilesService>(
 final versionServiceProviderWithToken = Provider<ApplicationPropsService>(
   (ref) =>
       ApplicationPropsService(ref.watch(versionRepositoryProviderWithToken)),
+);
+final profileImageServiceProviderWithToken = Provider<ProfileImageService>(
+  (ref) =>
+      ProfileImageService(ref.watch(profileImageRepositoryProviderWithToken)),
 );
 
 // ***************** RIVERPOD ***************** //
@@ -135,35 +128,7 @@ final versionNotifierProvider =
     NotifierProvider<ApplicationPropsNotifier, ApplicationPropsState>(
   () => ApplicationPropsNotifier(),
 );
-
-// final dataServiceProvider = Provider((ref) => DataService());
-
-// final notificationsProvider =
-//     FutureProvider<List<NotificationItem>>((ref) async {
-//   final dataService = ref.watch(fileTransferNotifierProvider);
-//   return dataService.fetchNotifications();
-// });
-
-// final videosProvider = FutureProvider<List<VideoItem>>((ref) async {
-//   final dataService = ref.watch(dataServiceProvider);
-//   return dataService.fetchVideos();
-// });
-
-// final picturesProvider = FutureProvider<List<PictureItem>>((ref) async {
-//   final dataService = ref.watch(dataServiceProvider);
-//   return dataService.fetchPictures();
-// });
-
-// // final resetPasswordNotifier =
-// //     NotifierProvider<ResetPasswordNotifier, AsyncValue<bool>>(
-// //   () => ResetPasswordNotifier(),
-// // );
-
-// // final sightListProvider = NotifierProvider<SightListNotifier, ListState>(
-// //   () => SightListNotifier(),
-// // );
-
-// // final favoriteListProvider =
-// //     NotifierProvider<FavoriteListNotifier, FavoriteListState>(
-// //   () => FavoriteListNotifier(),
-// // );
+final profileImageNotifierProvider =
+    NotifierProvider<ProfileImageNotifier, ProfileImageState>(
+  () => ProfileImageNotifier(),
+);

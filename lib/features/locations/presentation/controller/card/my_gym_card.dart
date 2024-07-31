@@ -2,16 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:trainee_app/core/localization_extension.dart';
 import 'package:trainee_app/core/style/colors.dart';
+import 'package:trainee_app/features/auth/data/api/model/user/userLogin/UserLoginResponse.dart';
 import 'package:trainee_app/features/auth/data/api/model/user/userdetails/UserDetails.dart';
 import 'package:trainee_app/features/auth/presentation/util/SharedPrefsManager.dart';
+import 'package:trainee_app/features/files/domain/profile_image.dart';
 import 'package:trainee_app/features/locations/presentation/controller/card/CardModel.dart';
 import 'package:intl/intl.dart';
 import '../../assets.dart' as app_assets;
 
 class MyGymCard extends StatefulWidget {
-  const MyGymCard({super.key, required this.userDetails});
+  const MyGymCard(
+      {super.key, required this.userLogintoken, required this.profileImage});
 
-  final UserDetails userDetails;
+  final UserLoginResponse userLogintoken;
+  final ProfileImage profileImage;
 
   @override
   State<MyGymCard> createState() => _MyGymCardState();
@@ -24,12 +28,12 @@ class _MyGymCardState extends State<MyGymCard> {
   void initState() {
     super.initState();
     cardModel = createCustomCardModel(
-      widget.userDetails.schoolDetails.school.schoolName,
-      "${widget.userDetails.name} ${widget.userDetails.lastName}",
-      widget.userDetails.phoneNumber!,
+      widget.userLogintoken.userDetails.schoolDetails.school.schoolName,
+      "${widget.userLogintoken.userDetails.name} ${widget.userLogintoken.userDetails.lastName}",
+      widget.userLogintoken.userDetails.phoneNumber!,
       "",
-      parseStringToDate(widget.userDetails.user.createdAt),
-      widget.userDetails.schoolDetails.schoolLocation,
+      parseStringToDate(widget.userLogintoken.userDetails.user.createdAt),
+      widget.userLogintoken.userDetails.schoolDetails.schoolLocation,
     );
   }
 
@@ -73,12 +77,16 @@ class _MyGymCardState extends State<MyGymCard> {
                   ),
                 ),
                 const SizedBox(width: 50),
-                Image.asset(
-                  app_assets.getLogoImage(
-                      widget.userDetails.schoolDetails.school.schoolName),
-                  width: 100,
-                  height: 100,
-                  fit: BoxFit.cover,
+                SizedBox(
+                  width: 100, // Adjust the width as needed
+                  height: 100, // Adjust the height as needed
+                  child: Image.network(
+                    widget.profileImage.uri,
+                    headers: {
+                      'Authorization': 'Bearer ${widget.userLogintoken.token}',
+                    },
+                    fit: BoxFit.cover, // Adjust the fit as needed
+                  ),
                 ),
               ],
             ),

@@ -1,5 +1,9 @@
+import 'package:json_annotation/json_annotation.dart';
+part 'School.g.dart';
+
+@JsonSerializable()
 class School {
-  final int? id;
+  final int id;
   final String schoolName;
 
   School({
@@ -7,17 +11,9 @@ class School {
     required this.schoolName,
   });
 
-  factory School.fromJson(Map<String, dynamic> json) {
-    return School(
-      id: json['id'],
-      schoolName: json['schoolName'],
-    );
-  }
+  // From JSON
+  factory School.fromJson(Map<String, dynamic> json) => _$SchoolFromJson(json);
 
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'schoolName': schoolName,
-    };
-  }
+  // To JSON
+  Map<String, dynamic> toJson() => _$SchoolToJson(this);
 }

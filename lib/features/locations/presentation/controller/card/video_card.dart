@@ -68,9 +68,9 @@ class _VideoCardState extends State<VideoCard> {
     setState(() {
       if (_controller.value.isPlaying) {
         _controller.pause();
-        VideoManager().stopVideo(); // Stop the current video
+        VideoManager().stopVideo();
       } else {
-        VideoManager().playVideo(_controller); // Play the new video
+        VideoManager().playVideo(_controller);
         _controller.play();
       }
     });
@@ -171,7 +171,7 @@ class _VideoCardState extends State<VideoCard> {
                   bottom: 16,
                   right: 16,
                   child: IconButton(
-                    icon: Icon(Icons.fullscreen, size: 30),
+                    icon: const Icon(Icons.fullscreen, size: 30),
                     onPressed: _openFullScreen,
                   ),
                 ),

@@ -1,6 +1,5 @@
 import 'package:trainee_app/features/school/domain/models/SchoolRequest.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'SchoolRequest.dart';
 
 part 'SchoolDetailsRequest.g.dart';
 

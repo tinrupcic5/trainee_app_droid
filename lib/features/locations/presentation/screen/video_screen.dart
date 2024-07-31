@@ -30,7 +30,6 @@ class _VideoCardState extends State<VideoCard> {
     _controller.setLooping(true);
     _controller.addListener(_videoListener);
 
-    // Initialize ScrollController
     _scrollController = ScrollController();
     _scrollController.addListener(() {
       _checkVisibility();
@@ -189,7 +188,7 @@ class _VideoCardState extends State<VideoCard> {
                 bottom: 16,
                 right: 16,
                 child: IconButton(
-                  icon: Icon(Icons.fullscreen, size: 30),
+                  icon: const Icon(Icons.fullscreen, size: 30),
                   onPressed: _openFullScreen,
                 ),
               ),
