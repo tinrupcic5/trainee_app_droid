@@ -10,14 +10,20 @@ class CustomColors {
 //Light palette
 const backgroundColorLight = Color(0xFFFAFDFF);
 const textColorLight = Color(0xFF171C26);
+const textColorDark = Color.fromARGB(255, 156, 157, 158);
 const whiteColor = Color(0xFFFFFFFF);
+const blackColor = Color(0xFFFFFFFF);
 const primaryColorLight = Color(0xFFD17438);
 const secondaryColorLight = Color(0xFF9D2C56);
 const shadowColorLight = Color(0x26000000);
 const errorColorLight = Color(0xFFFF2D2D);
 const borderColorLight = Color.fromRGBO(0, 0, 0, 0.15);
+const borderColorDark = Color.fromARGB(255, 156, 157, 158);
 const ratingActiveColorLight = Color.fromRGBO(255, 193, 7, 1);
 const ratingInactiveColorLight = Color.fromRGBO(160, 160, 160, 1);
+
+//Dark palette
+const backgroundColorDark = Color.fromARGB(255, 43, 26, 94);
 
 class AppColors extends ThemeExtension<AppColors> {
   final Color? backgroundColor;

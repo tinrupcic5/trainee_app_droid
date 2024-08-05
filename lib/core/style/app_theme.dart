@@ -30,4 +30,30 @@ class AppTheme {
       ),
     ],
   );
+  static final ThemeData darkTheme = ThemeData(
+    fontFamily: 'Montserrat',
+    useMaterial3: true,
+    scaffoldBackgroundColor: backgroundColorDark,
+    bottomNavigationBarTheme:
+        const BottomNavigationBarThemeData(backgroundColor: blackColor),
+    shadowColor: shadowColorLight,
+    appBarTheme: const AppBarTheme(
+      surfaceTintColor: backgroundColorDark,
+      color: backgroundColorDark,
+      elevation: 3,
+      shadowColor: Colors.white38,
+    ),
+    extensions: const [
+      AppColors(
+        backgroundColor: backgroundColorDark,
+        textColor: textColorDark,
+        primaryColor: primaryColorLight,
+        secondaryColor: secondaryColorLight,
+        errorColor: errorColorLight,
+        borderColor: borderColorDark,
+        ratingActiveColor: ratingActiveColorLight,
+        ratingInactiveColor: ratingInactiveColorLight,
+      ),
+    ],
+  );
 }

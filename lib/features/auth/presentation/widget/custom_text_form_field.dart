@@ -27,14 +27,16 @@ class CustomTextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
-      style: context.textLabel,
+      style: context.textLabel
+          .copyWith(color: context.colorText), // Set text color to white
       decoration: InputDecoration(
-        fillColor: context.colorBackground,
+        fillColor: Color.fromARGB(255, 50, 41, 95),
         floatingLabelBehavior: FloatingLabelBehavior.never,
         filled: true,
         alignLabelWithHint: true,
         isDense: true,
-        label: Text(label, style: context.textLabel),
+        label: Text(label,
+            style: context.textLabel.copyWith(color: context.colorBorder)),
         suffixIcon: suffixIcon,
         border: DecoratedInputBorder(
           shadow: BoxShadow(
@@ -80,7 +82,7 @@ class CustomTextFormField extends StatelessWidget {
             borderRadius: BorderRadius.circular(15),
           ),
         ),
-        errorStyle: context.textError,
+        errorStyle: context.textError.copyWith(color: Colors.white),
       ),
       validator: validator,
       textInputAction: textInputAction,

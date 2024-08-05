@@ -18,17 +18,20 @@ class PrimaryButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: isLoading ? null : onPressed,
       style: ElevatedButton.styleFrom(
-        foregroundColor: context.colorPrimary,
-        shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
+        foregroundColor: context.colorBackground,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
         padding: EdgeInsets.zero,
       ),
       child: Ink(
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [context.colorPrimary, context.colorSecondary],
-          ),
+          color: context.colorBackground,
           borderRadius: BorderRadius.circular(15.0),
+          border: Border.all(
+            color: Colors.blue, // Set the border color
+            width: 2.0, // Set the border width
+          ),
         ),
         child: Container(
           constraints: const BoxConstraints(minHeight: 50.0),

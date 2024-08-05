@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:trainee_app/core/di.dart';
-import 'package:trainee_app/core/style/colors.dart';
+import 'package:trainee_app/core/style/style_extensions.dart';
 import 'package:trainee_app/features/locations/presentation/controller/card/calendar_card.dart';
 import 'package:trainee_app/features/locations/presentation/controller/card/calendar_items.dart';
 import 'package:trainee_app/features/participation/domain/models/Participation.dart';
@@ -71,9 +71,7 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen> {
               training.trainingLevel.trainingLevelClassification,
               anyParticipantAttended,
               training.trainingStatus,
-              anyParticipantAttended
-                  ? CustomColors.blueCalendarCardColor
-                  : CustomColors.redCalendarCardColor,
+              anyParticipantAttended ? Colors.blue : Colors.green,
             );
           }).toList();
 

@@ -6,10 +6,14 @@ import 'package:trainee_app/features/files/domain/file_uri_response.dart';
 class NotificationCard extends StatelessWidget {
   final FileUriResponse notification;
   final UserLoginResponse userLogintoken;
+  final Color cardColor;
+  final Color textColor;
 
   const NotificationCard({
     required this.notification,
     required this.userLogintoken,
+    this.cardColor = Colors.white, // Default color
+    this.textColor = Colors.black, // Default color
     super.key,
   });
 
@@ -20,10 +24,14 @@ class NotificationCard extends StatelessWidget {
 
     return Card(
       margin: const EdgeInsets.all(8.0),
+      color: Colors.blue, // Set the card background color
       child: ListTile(
         title: Text(
           notificationMessage,
-          style: const TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: textColor, // Set the text color
+          ),
         ),
       ),
     );

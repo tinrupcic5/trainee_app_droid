@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:trainee_app/core/localization_extension.dart';
-import 'package:trainee_app/core/style/colors.dart';
+import 'package:trainee_app/core/style/style_extensions.dart';
 import 'package:trainee_app/features/auth/data/api/model/user/userLogin/UserLoginResponse.dart';
-import 'package:trainee_app/features/auth/data/api/model/user/userdetails/UserDetails.dart';
 import 'package:trainee_app/features/auth/presentation/util/SharedPrefsManager.dart';
 import 'package:trainee_app/features/files/domain/profile_image.dart';
 import 'package:trainee_app/features/locations/presentation/controller/card/CardModel.dart';
@@ -53,8 +52,8 @@ class _MyGymCardState extends State<MyGymCard> {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              CustomColors.blueCardColor,
-              CustomColors.purpleCardColor.withOpacity(0.7),
+              Colors.blue,
+              Colors.purple.withOpacity(0.7),
             ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
@@ -131,9 +130,7 @@ class _MyGymCardState extends State<MyGymCard> {
                   const SizedBox(height: 8),
                   const SizedBox(height: 8),
                   Text(
-                    context.memberSince +
-                        " " +
-                        cardModel.createdAt.toUpperCase(),
+                    "${context.memberSince} ${cardModel.createdAt.toUpperCase()}",
                     style: const TextStyle(
                       fontSize: 20,
                       fontFamily: "Inter",

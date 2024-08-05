@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trainee_app/core/style/style_extensions.dart';
 import 'package:trainee_app/features/auth/data/api/model/user/userLogin/UserLoginResponse.dart';
 import 'package:trainee_app/features/files/domain/file_uri_response.dart';
 import 'package:trainee_app/features/locations/presentation/controller/card/FullScreenImagePage.dart';
@@ -37,6 +38,7 @@ class _PictureCardState extends State<PictureCard> {
   Widget build(BuildContext context) {
     return Card(
       margin: const EdgeInsets.all(8.0),
+      color: Colors.blue,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
